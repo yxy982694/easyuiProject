@@ -1,0 +1,64 @@
+/* 最新公告点击滑块 */
+.lastnew-container .pagination {
+  top: 18% !important;
+}
+/* 我的待办 */
+.todo-listvalue{
+	top: 7px !important;
+}
+.todo-listtext{
+	top: 7px !important;
+}
+.header-center{
+	display: none;
+}
+.header-left,
+.header-right{
+	background-color: transparent !important;
+}
+.todo-userimg{
+	border: 0 !important;
+}
+.xia-icon{
+	top: 5px;
+}
+.todo-bottom-title .todo_icon{
+	top: 7px;
+}
+.tabs li a.tabs-close{
+	background: none !important;
+	margin-top: -10px !important;
+    height: 17px !important;
+    width: 17px !important;
+    right: 3px !important;
+}
+.tabs li a.tabs-close:before{
+    content:' × ';
+    display: inline-block;
+    font-size: 18px;
+    color: #2761de;
+}
+.panel-tool .panel-tool-close{
+	background: none !important;
+	width: 17px !important;
+	height: 17px !important;
+}
+.panel-tool .panel-tool-close:before{
+	content:' × ';
+	display: inline-block;
+	font-size: 20px;
+	color: #000;
+	margin-top: -6px;
+}
+/* .combo{
+    width: 153px !important;
+}
+.combo-text{
+    width: 123px !important;
+}
+.panel.combo-p,
+.combo-panel,
+.combobox-item{
+    width: 153px !important;
+    overflow: hidden;
+} */

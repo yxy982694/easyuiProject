@@ -1,0 +1,28 @@
+.fa-file-text{
+	top: 14px !important;
+}
+.left-icon{
+	top: 13px !important;
+}
+.west-center-text{
+	top: 12px !important;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.left-icon-info{
+	top: 10px !important;
+}
+.west-center-text-info{
+	top: 9px !important;
+}
+.span-ver{
+	top: 16px !important;
+}
+/* 中间菜单样式 */
+.center-tab-text{
+	top: 25px !important;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>欢迎使用集中运维管理系统</title>
+    <link rel="stylesheet" href="../../../css/easyui.min.css?v=20200807">
+    <link rel="stylesheet" href="../../../css/icon.css?v=20200807">
+    <link rel="stylesheet" href="../../../css/modifyStyle.css?v=20200807">
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" href="../../../css/ie8/ie8common.css">
+	<![endif]-->
+    <style type="text/css">
+        .tb-content{
+            float: left;
+            width: 50%;
+            text-align: center;
+            padding:5px 0;
+            margin: 0;
+        }
+        .text-center{
+            text-align: center;
+        }
+        .shenhe-radio{
+            width: 50%;
+            float: left;
+            margin: 0;
+            height: 100% !important;
+        }
+        .radio-input{
+            vertical-align: middle;
+            margin: 0 3px 0 0;
+        }
+        .bottom-yuanyin{
+            margin-top: 10px;
+            text-align: center;
+        }
+        label{
+            vertical-align: middle;
+        }
+        textarea{
+            vertical-align: middle;
+            text-align: left;
+        }
+        .shenhe-confirm{
+            margin-top: 10px;
+            text-align: center;
+        }
+        .south-log-par{
+            position: relative;
+        }
+        .log-mouth{
+            position: absolute;
+            top: 12px;
+            left: 250px;
+            cursor: pointer;
+        }
+		.btn-absolute{
+			position: absolute;
+			z-index: 99;
+		}
+		.datagrid-view2 .datagrid-body{
+			position: relative;
+		}
+		.eoms-btn.eoms-green{
+			background-color: #67c23a;
+			margin-left: 0;
+			border:none;
+		}	
+		.eoms-cancel {
+		  margin-left: 3px;
+		}
+		.remark-text{
+			color: #f00;
+			font-size: 12px;
+			position: absolute;
+			left: 300px;
+			top: 5px;
+		}
+    </style>
+</head>
+<body class="easyui-layout">
+<div id='Loading'>
+    <img class="load-img" src='../../../images/loading.gif'/>加载中···
+</div>
+<!-- <div class="btn-absolute">
+	<button class="eoms-btn">发布</button>
+	<button class="eoms-cancel">取消</button>
+</div> -->
+
+<!-- <div class="btn-absolute eoms-btns hidden-content">
+	<a href="javascript:void(0)" data-options="iconCls:'icon-save'" class="easyui-linkbutton saveBtn" id="saveBtn">保存</a>
+	<a href="javascript:void(0)" data-options="iconCls:'icon-remove'" class="easyui-linkbutton clearEditBtn" id="clearEditBtn">取消</a>
+</div> -->
+<div data-options="region:'north',border:false" style='height: 26px;' class="eoms-btns">
+    <a href="javascript:void(0)" data-options="disabled:true,iconCls:'icon-add'" class="easyui-linkbutton addBtn" id="addBtn">新增</a>
+    <a href="javascript:void(0)" data-options="disabled:true,iconCls:'icon-edit'" class="easyui-linkbutton editBtn" id="editBtn">编辑</a>
+	<a href="javascript:void(0)" data-options="disabled:true,iconCls:'icon-cancel'" class="easyui-linkbutton cancel-easy-btn" id="cancelBtn">删除</a>
+    <a href="javascript:void(0)" data-options="disabled:true,iconCls:'icon-print'" class="easyui-linkbutton shenBtn" id="openWin">审核</a>
+    <a href="/haeoms/view/matrixUser/exportMatrixUser" data-options="iconCls:'icon-help'" class="easyui-linkbutton leadOutBtn" id="leadOut">导出</a>
+	<span class="remark-text">注:蓝色高亮为待审核数据,审核通过后方可生效,审核不通过回退至修改前信息</span>
+</div>
+<div data-options="region:'center',border:false" style="background:#fff;">
+    <table id="tg"></table>
+</div>
+<div id="logDialog" class="easyui-dialog"
+     title="操作日志"
+     data-options="modal:true,
+		closed:true,
+		shadow:true,
+		resizable:true,
+		constrain:true,
+		onClose:matrixList.closeLog
+		"
+     style="width:950px;height:250px;">
+    <div id="cccc" class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" class="win-center-container">
+            <div class="easyui-layout" data-options="fit:true">
+                <div data-options="region:'center'" class="table-center-container table-height26" style="padding:5px 0 0;">
+                    <table id="dglog"></table>
+                </div>
+                <div data-options="region:'south',border:false" class="south-log-par" style="height:50px;padding:3px;">
+                    <div id="pp"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="w" class="easyui-dialog"
+     title="审核"
+     data-options="modal:true,
+		closed:true,
+		shadow:true,
+		resizable:true,
+		constrain:true,
+		onClose:matrixList.closeShenhe
+		"
+     style="width:950px;height:350px;">
+    <div id="cc" class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center'" class="win-center-container">
+            <div class="easyui-layout" data-options="fit:true">
+                <div data-options="region:'north'" style="height:30px;">
+                    <p class="tb-content"><span>操作人：</span><span class="caozuoren"></span></p>
+                    <p class="tb-content"><span>操作时间：</span><span class="caozuoshijian"></span></p>
+                </div>
+                <div data-options="region:'center'" class="table-center-container table-height26" style="padding:5px 0;">
+                    <table id="dgshenhe"></table>
+                </div>
+                <div data-options="region:'south'" style="height:85px;">
+                    <div class="bottom-yuanyin">
+                        <label for="">审核不通过原因：</label>
+                        <textarea rows="2" cols="80" id="shenheArea"></textarea>
+                    </div>
+                    <div class="shenhe-confirm"><button class="shenhe-confirmbtn eoms-btn">确定</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--[if lt IE 9]>
+<script src="../../../js/ie8/html5shiv.min.js"></script>
+<script src="../../../js/ie8/css3-mediaqueries.js"></script>
+<![endif]-->
+<script type="text/javascript">
+    if (navigator.userAgent.indexOf("MSIE 8.0") > -1 || navigator.userAgent.indexOf("MSIE 9.0") > -1) {
+        document.write('<script src="../../../js/ie8/jquery.1.7.2.min.js"><\/script>');
+    } else {
+        document.write('<script src="../../../js/jquery-3.3.1.min.js"><\/script>');
+    }
+</script>
+<script src="../../../js/jquery.easyui.min.js"></script>
+<script src="../../../js/easyui-lang-zh_CN.js"></script>
+<script src="../../../js/jquery.cookie.js"></script>
+<script src="../../../js/global.js?v=202008071"></script>
+<script>
+	var editingId = '';
+    eomsGlobal.completeGif();
+    document.querySelector('.caozuoren').innerHTML = this.top.indexVariable.userNameCn;
+    document.querySelector('.caozuoshijian').innerHTML = eomsGlobal.formDate();
+    var matrixList = {
+        tongguoObj: {},
+        expandId: '',
+        logId: '',
+		timer: null,
+		isClickAdd: true,
+		rowIdArr: [],
+        approveId: '',// 审核用户id
+		editInput: function () {
+			$('#tg').treegrid('beginEdit', editingId);
+			$('div[class*=-name] .datagrid-editable-input').attr('disabled','disabled');
+			$('div[class*=-name] .datagrid-editable-input').css('color','#666');
+			$('div[class*=-name] .datagrid-editable-input').css('background','transparent');
+			$('div[class*=-name] .datagrid-editable-input').css('border','1px solid transparent');
+		},
+		reloadTree: function () {
+			matrixList.loadTreeData();
+			matrixList.disableBtn();
+			editingId = '';
+		},
+		placeBtn: function (i) {
+			var rect,edtor,node,scrollHeigh;
+			edtor = $('#tg').treegrid('getEditors',editingId);
+			node = edtor[i].target;
+			rect = node[0].getBoundingClientRect();
+			scrollHeigh = $('.datagrid-view2 .datagrid-body')[0].scrollTop;
+			$('.btn-absolute').css({
+				top: rect.top+scrollHeigh-88+'px',
+				left: rect.right+10+'px'
+			});
+			$('.btn-absolute').addClass('show-content').removeClass('hidden-content');
+		},
+        loadPermission: function () {
+        	eomsGlobal.ajaxFn('/haeoms/view/matrixUser/findPermission',function (res) {
+				if (!res.approve) {
+					$('#openWin').hide();
+				}
+				if (!res.edit) {
+					$('#addBtn').hide();
+					$('#editBtn').hide();
+					$('#cancelBtn').hide();
+				}
+			})	
+        },
+		disableBtn: function () {
+            $('#addBtn').linkbutton('disable');
+            $('#editBtn').linkbutton('disable');
+            $('#cancelBtn').linkbutton('disable');
+            $('#openWin').linkbutton('disable');
+        },
+        clickRow: function (row) {
+            var userName = row.userName,
+                namen = row.name,
+				canEdit = row.canEdit;
+            // $('#tg').treegrid('toggle',row.id);
+			var parent = $('#tg').treegrid('getParent',row.id);
+            if (userName) {
+                $('#addBtn').linkbutton('disable');
+				if (row.status == 2 && row.approve == true) {
+					$('#openWin').linkbutton('enable');
+				} else {
+					$('#openWin').linkbutton('disable');
+				}
+				if (canEdit==true) {
+					$('#editBtn').linkbutton('enable');
+					$('#cancelBtn').linkbutton('enable');
+				} else {
+					$('#editBtn').linkbutton('disable');
+					$('#cancelBtn').linkbutton('disable');
+				}
+            } else if (parent && !$('#tg').treegrid('getParent',parent.id)) {
+                if ($('#tg').treegrid('getParent',row.id).id == '0') {
+					$('#addBtn').linkbutton('enable');
+					$('#openWin').linkbutton('disable');
+					if (canEdit==true) {
+						$('#editBtn').linkbutton('enable');
+						$('#cancelBtn').linkbutton('enable');
+					} else {
+						$('#editBtn').linkbutton('disable');
+						$('#cancelBtn').linkbutton('disable');
+					}
+                } else {
+					$('#addBtn').linkbutton('enable');
+					$('#editBtn').linkbutton('disable');
+					$('#cancelBtn').linkbutton('disable');
+					$('#openWin').linkbutton('disable');
+                }
+            } else if (row.id == 0) {
+                $('#addBtn').linkbutton('enable');
+                $('#editBtn').linkbutton('disable');
+                $('#cancelBtn').linkbutton('disable');
+                $('#openWin').linkbutton('disable');
+            } else {
+                matrixList.disableBtn();
+            }
+        },
+        openLog: function () {
+            $('#logDialog').window('open');
+            $('#logDialog').window('hcenter');
+            $('#logDialog').window('vcenter');
+        },
+        loadLog: function (currentPage,userId,size) {
+            matrixList.logId = userId || matrixList.logId;
+            currentPage = currentPage || 1;
+            size = size || 6;
+            var jsonObj,jsonStr;
+            jsonObj = {
+                userid: matrixList.logId,
+                current: currentPage,
+                size: size
+            };
+            jsonStr = JSON.stringify(jsonObj);
+            eomsGlobal.ajaxFn('/haeoms/view/matrixLog/getMatrixLog',function (res) {
+                if (res.status == '200') {
+                    matrixList.loadLogTable(res.data.records);
+					if (!eomsGlobal.loadPagination.logPage) {
+						eomsGlobal.loadPagination({
+						    $page: $('#pp'),
+						    total: res.data.total,
+						    pageSize: 6,
+						    callBackFn: matrixList.loadLog,
+							id: 'logPage'
+						});
+						matrixList.openLog();
+						$('#logDialog').window('resize',{
+						    width: 960,
+						    height: 260
+						});
+					}
+                }
+            },'post',jsonStr)
+        },
+        loadLogTable: function (dglogData) {
+            $('#dglog').datagrid({
+                data: dglogData,
+                rownumbers:true,
+                singleSelect:true,
+                fit:true,
+                fitColumns:true,
+                inline:true,
+                border:true,
+                columns:[[
+                    {field:'operator',title:'操作人',width:70,align:'center'},
+                    {field:'createtime',title:'操作时间',width:140,align:'center'},
+                    {field:'opratoretype',title:'操作类型',width:70,align:'center',formatter:function (value,row){
+                        return matrixList.formateType(value);}
+					},
+                    {field:'approveuser',title:'审核人',width:70,align:'center'},
+                    {field:'approvetime',title:'审核时间',width:140,align:'center'},
+                    {field:'approvestate',title:'状态',width:70,align:'center',formatter:function (value,row) {
+                        return matrixList.formateStatus(value);}
+					},
+                    {field:'noreason',title:'不通过原因',width:70,align:'center'},
+                    {field:'beforename',title:'修改前姓名',width:70,align:'center'},
+                    {field:'beforetel',title:'修改前手机号',width:120,align:'center'},
+                    {field:'aftername',title:'修改后姓名',width:70,align:'center'},
+                    {field:'aftertel',title:'修改后手机号',width:120,align:'center'},
+                ]]
+            });
+        },
+        formateType: function  (str) {
+            switch (str) {
+                case '1':
+                    return '增加人员';
+                case '2':
+                    return '删除人员';
+                case '3':
+                    return '修改人员';
+                case '4':
+                    return '审核人员';
+            }
+        },
+        formateStatus: function  (str) {
+            switch (str) {
+                case '0':
+                    return '不通过';
+                case '1':
+                    return '通过';
+                case '2':
+                    return '审核中';
+            }
+        },
+		closeLog: function () {
+			editingId = '';
+			matrixList.disableBtn();
+			eomsGlobal.loadPagination.logPage = false;
+			if (navigator.userAgent.indexOf("MSIE 8.0") > -1) {
+				location.reload();
+			}
+		},
+        closeShenhe: function () {
+			editingId = '';
+			matrixList.disableBtn();
+			$('#shenheArea').val('');
+			if (navigator.userAgent.indexOf("MSIE 8.0") > -1) {
+				location.reload();
+			}
+		},
+		loadTreeData: function () {
+            eomsGlobal.ajaxFn('/haeoms/view/matrixTree/getCityJobTree',function (res) {
+                var treeData = res.data;
+                $('#tg').treegrid({
+                    title:'地市群组矩阵表',
+                    fit: true,
+                    animate:true,
+                    fitColumns:true,
+                    data: treeData,
+                    idField:'id',
+                    treeField:'name',
+                    lines: false,
+                    onClickRow: matrixList.clickRow,
+                    rowStyler: function (row,index) {
+                        if (row && typeof(row)== 'object' && row.status == '2') {
+							matrixList.rowIdArr.push(row.id);
+                            return 'color:#1E90FF;font-weight:bold;';
+                        }
+                    },
+                    columns:[[
+                        {field:'name',title:'机构',width:180,editor:'text'},
+                        {field:'userName',title:'姓名',width:60,editor:'text',align:'center'},
+                        {field:'phone',title:'手机号',width:80,editor:'text',align:'center'},
+                        {field:'email',title:'邮箱',width:80,editor:'text',align:'center'},
+                        {field:'log',title:'日志',width:80,formatter:function (value,row) {
+                                var namen = row.userName;
+                                if (namen) {
+									if (row && typeof(row)== 'object' && row.status == '2') {
+										return '<span class="tree-lookWhite" onclick="matrixList.loadLog(1,\''+row.userId+'\')">查看</span>';
+									} else {
+										return '<span class="tree-look" onclick="matrixList.loadLog(1,\''+row.userId+'\')">查看</span>';
+									}
+                                    
+                                }
+                            },align:'center'}
+                    ]]
+                });
+				var arr = matrixList.rowIdArr;
+				for (var i=0,len=arr.length;i<len;i++) {
+					var parent = $('#tg').treegrid('getParent', arr[i]);
+					var pParent = $('#tg').treegrid('getParent', parent.id);
+					$('tr[node-id='+parent.id+']').find('.tree-title').css('color','#1E90FF');
+					$('tr[node-id='+parent.id+']').find('.tree-title').css('font-weight','bold');
+					$('tr[node-id='+pParent.id+']').find('.tree-title').css('color','#1E90FF');
+					$('tr[node-id='+pParent.id+']').find('.tree-title').css('font-weight','bold');
+				}
+				matrixList.rowIdArr = [];
+				var html = '<div class="btn-absolute eoms-btns hidden-content">'+
+				'<button class="eoms-btn eoms-green" onclick="matrixList.clickSave()">保存</button>'+
+	            '<button class="eoms-cancel" onclick="matrixList.clickQuxiao()">取消</button>'+
+                  '</div>';
+				$('.datagrid-view2 .datagrid-body').append($(html));
+				if (matrixList.timer) {
+					clearTimeout(matrixList.timer);
+				}
+				matrixList.timer = setTimeout(function () {
+					$('.btn-absolute').removeClass('show-content').addClass('hidden-content');
+				},100);
+                $('#tg').treegrid('expandAll');
+            });
+        },
+		clickSave: function () {
+			if (editingId){
+			    $('#tg').treegrid('endEdit', editingId);
+			    var dataRow = $('#tg').treegrid('find',editingId),
+			        dataRowParent = $('#tg').treegrid('getParent',editingId),
+			        dataRowChilds = [],
+			        telRow = dataRow.phone;
+			    if (dataRowParent) {
+			        dataRowChilds = $('#tg').treegrid('getChildren',dataRowParent.id);
+			        matrixList.expandId = editingId;
+			    }
+			    var jsonObj,jsonStr;
+				var rect,edtor,node,scrollHeigh;
+			    if (dataRowParent.id == '0') {// 省公司下机构，新增编辑
+				    if (!dataRow.name) {
+						$.messager.alert('提示','内容不可为空,请重新输入');
+						$('#tg').treegrid('beginEdit', editingId);
+						$('.datagrid-editable-input').css('display','none');
+						$('div[class*=-name] .datagrid-editable-input').css('display','inline-block');
+						return;
+					}
+			        matrixList.disableBtn();
+			        editingId = '';
+			        jsonObj = {
+			            name: dataRow.name,
+			            id: dataRow.id,
+			            parentid: '0'
+			        };
+			        jsonStr = JSON.stringify(jsonObj);
+			        eomsGlobal.ajaxFn('/haeoms/view/matrixTree/updateCityJobTreeById',function (res) {
+						if (res.status == '200') {
+						    $.messager.alert('提示','更新成功');
+						    matrixList.loadTreeData();
+						}
+					},'post',jsonStr);
+			        return;
+			    }
+			    if (!dataRow.userName || !dataRow.phone || !dataRow.email) {
+			        $.messager.confirm('提示', '姓名,手机号和邮箱都为必填项,请重新输入', function(r){
+			            if (r) {
+			                matrixList.editInput();
+			            } else {
+							if (matrixList.isClickAdd) {
+								$('#tg').treegrid('remove', editingId);
+								$('.btn-absolute').removeClass('show-content').addClass('hidden-content');
+								editingId = '';
+								matrixList.disableBtn();
+							} else {
+								matrixList.reloadTree();
+							}
+			            }
+			        })
+			        return;
+			    }
+			    if (!eomsGlobal.check('phone',dataRow.phone)) {
+					$.messager.confirm('提示', '手机号码格式不正确,请重新输入', function(r){
+					    if (r) {
+					        matrixList.editInput();
+					    } else {
+							matrixList.reloadTree();
+					    }
+					})
+			        return;
+			    }
+			    if (!eomsGlobal.check('email',dataRow.email)) {
+					$.messager.confirm('提示', '邮箱格式不正确，请重新输入', function(r){
+					    if (r) {
+					        matrixList.editInput();
+					    } else {
+							matrixList.reloadTree();
+					    }
+					})
+			        return;
+			    }
+			    editingId = '';
+			    if (dataRow.id.indexOf('laile11')>-1) {
+			        jsonObj = {
+			            name: dataRow.userName,
+			            phone: dataRow.phone,
+			            parentid: dataRowParent.id,
+			            email: dataRow.email
+			        };
+			    } else {
+			        jsonObj = {
+			            id: dataRow.id,
+			            name: dataRow.userName,
+			            phone: dataRow.phone,
+			            parentid: dataRowParent.id,
+			            email: dataRow.email
+			        };
+			    }
+			    jsonStr = JSON.stringify(jsonObj);
+			    matrixList.addEditMatrixUser(jsonStr);
+			}
+		},
+		clickQuxiao: function () {
+			$('.btn-absolute').removeClass('show-content').addClass('hidden-content');
+			if (editingId) {
+				matrixList.reloadTree();
+				return;
+			}
+			editingId = '';
+			matrixList.disableBtn();
+		},
+		addEditMatrixUser: function (jsonStr) {
+			eomsGlobal.ajaxFn('/haeoms/view/matrixUser/updateMatrixUser',function (res) {
+			    var p = $('#tg').treegrid('getParent',matrixList.expandId);
+			    var pp = $('#tg').treegrid('getParent',p.id);
+			    var s = p.name+':';
+			    if (pp) {
+			        pp = pp.name+'-';
+			    } else {
+			        pp = '';
+			    }
+			    if (res.status == '200' && res.message == '成功') {
+			        $.messager.alert('提示',pp+s+'更新成功');
+			        matrixList.reloadTree();
+			    } else if (res.data == '您输入的手机号已存在或还没有加入白名单！') {
+			        $.messager.confirm('提示', '您输入的手机号已存在或还没有加入白名单！请重新输入', function(r){
+			            if (r) {
+							editingId = matrixList.expandId;
+			                matrixList.editInput();
+			            } else {
+							if (matrixList.isClickAdd) {
+								$('#tg').treegrid('remove',matrixList.expandId);
+							} else {
+								matrixList.loadTreeData();
+							}
+							$('.btn-absolute').removeClass('show-content').addClass('hidden-content');
+			            }
+			            matrixList.disableBtn();
+			        })
+			    } else {
+			        $.messager.confirm('提示', pp+s+'更新失败:'+res.data, function(r){
+			            if (r) {
+							editingId = matrixList.expandId;
+			                matrixList.editInput();
+			            } else {
+							if (matrixList.isClickAdd) {
+								$('#tg').treegrid('remove',matrixList.expandId);
+							} else {
+								matrixList.loadTreeData();
+							}
+			            }
+			            matrixList.disableBtn();
+			        })
+			    }
+			},'post',jsonStr)
+		},
+    };
+    matrixList.loadTreeData();
+	matrixList.loadPermission();
+    $(function(){
+        var btnImg = ['icon-add','icon-edit','icon-cancel','icon-print','icon-help','icon-save','icon-remove'];
+        eomsGlobal.modifyBtn(btnImg,'../../../');
+        $('#addBtn').click(function () {
+			matrixList.isClickAdd = true;
+            if (this.className.indexOf('l-btn-disabled')>-1) {
+                return;
+            }
+            if (editingId){
+                $('#tg').treegrid('select', editingId);
+                return;
+            }
+            var row = $('#tg').treegrid('getSelected');
+            var rowId = row.id;
+            var noww = (Math.random()+'').substr(2);
+            if (rowId == '0') {
+                $('#tg').treegrid('append',{
+                    parent: rowId,
+                    data: [{
+                        id: 'laile11'+noww,
+                        name: "",
+                        phone: "",
+                        userName: "",
+                        log: "",
+                        operation: "",
+                        state: "open",
+                        children: [],
+                        parent: rowId
+                    }]
+                });
+                $('#tg').treegrid('beginEdit','laile11'+noww);
+                $('.datagrid-editable-input').css('display','none');
+                $('div[class*=-name] .datagrid-editable-input').css('display','inline-block');
+                editingId = 'laile11'+noww;
+				matrixList.placeBtn(0);
+                return;
+            }
+            if (row) {
+                if (row.name == '分管网络副总' || row.name == '网络部三级经理') {
+                    var childLen = $('#tg').treegrid('getChildren',rowId);
+                    if (childLen.length >= 1) {
+                        $.messager.alert('提示',row.name+':已有1个成员，不可以再添加');
+                        return;
+                    }
+                }
+                $('#tg').treegrid('append',{
+                    parent: rowId,
+                    data: [{
+                        id: 'laile11'+noww,
+                        name: "",
+                        phone: "",
+                        userName: "",
+                        log: "查看",
+                        operation: "",
+                        state: "open",
+                        children: [],
+                        parent: rowId
+                    }]
+                });
+				editingId = 'laile11'+noww;
+                matrixList.editInput();
+				matrixList.placeBtn(3);
+            }
+        })
+        $('#editBtn').click(function () {
+			matrixList.isClickAdd = false;
+            if (this.className.indexOf('l-btn-disabled')>-1) {
+                return;
+            }
+            if (editingId){
+                $('#tg').treegrid('select', editingId);
+                return;
+            }
+            var row = $('#tg').treegrid('getSelected');
+            if (row){
+				editingId = row.id;
+				var parent = $('#tg').treegrid('getParent',editingId);
+                if (parent.id == '0') {
+					$('#tg').treegrid('beginEdit', editingId);
+                	$('.datagrid-editable-input').css('display','none');
+					$('div[class*=-name] .datagrid-editable-input').css('display','inline-block');
+					matrixList.placeBtn(0);
+                } else {
+					matrixList.editInput();
+					matrixList.placeBtn(3);
+                }	
+            }
+        })
+        $('#cancelBtn').click(function () {
+            if (this.className.indexOf('l-btn-disabled')>-1) {
+                return;
+            }
+            var row = $('#tg').treegrid('getSelected');
+            if (row){
+                $.messager.confirm('提示', '确定要删除吗？', function(r){
+                    if (r) {
+                        var jsonObj,jsonStr;
+                        jsonObj = {
+                            id: row.id
+                        };
+                        jsonStr = JSON.stringify(jsonObj);
+                        cancelMatrixUser(jsonStr,row.id);
+						editingId = '';
+                    }
+                })
+            }
+        })
+        function loadSuccess (data) {
+            for (var i=0;i<data.rows.length;i++) {
+                matrixList.tongguoObj[data.rows[i].aftertel] = 'no';
+            }
+        }
+        // function clickShenHeRow (index,row) {
+        //     var ss = $("input[name='shenhe"+row.aftertel+"']:checked").val();
+        //     var s = ss ? ss : 0;
+        //     matrixList.tongguoObj[row.aftertel] = s;
+        // }
+        function formatShenhe (val,row) {
+            return '<p class="shenhe-radio">'+
+                '<input id="shenhe1" class="radio-input" type="radio" name="shenhe" value="1">'+
+                '<label for="shenhe1"  class="radio-label">通过</label>'+
+                '</p>'+
+                '<p class="shenhe-radio">'+
+                '<input id="shenhe2" class="radio-input" type="radio" name="shenhe" value="0">'+
+                '<label for="shenhe2" class="radio-label">不通过</label>'+
+                '</p>';
+        }
+        function openVerifyWin () {
+            $('#w').window('open');
+            $('#w').window('hcenter');
+            $('#w').window('vcenter');
+        }
+        var opratoretypeData = null;
+		function loadVerifyTable (userId) {
+            var jsonObj,jsonStr;
+            jsonObj = {
+                userid: userId
+            };
+            jsonStr = JSON.stringify(jsonObj);
+            eomsGlobal.ajaxFn('/haeoms/view/matrixLog/waitApproveUser',function (res) {
+                if (res.status == '200') {
+					opratoretypeData = res.data;
+                    $('#dgshenhe').datagrid({
+                        data: opratoretypeData,
+                        rownumbers:true,
+                        singleSelect:true,
+                        fit:true,
+                        fitColumns:true,
+                        inline:true,
+                        border:true,
+                        // onClickRow:clickShenHeRow,
+                        onLoadSuccess: loadSuccess,
+                        columns:[[
+                            {field:'beforename',title:'姓名',width:160,align:'center'},
+                            {field:'beforetel',title:'手机号',width:160,align:'center'},
+                            {field:'opratoretype',title:'操作类型',width:160,align:'center',formatter:function (value,row){
+                                    return matrixList.formateType(value);
+                                }},
+                            {field:'aftername',title:'修改后姓名',width:160,align:'center'},
+                            {field:'aftertel',title:'修改后手机号',width:160,align:'center'},
+                            {field:'shenhe',title:'审核',width:200,align:'center',formatter:formatShenhe}
+                        ]]
+                    });
+                    openVerifyWin();
+                    $('#w').window('resize',{
+                        width: 960,
+                        height: 260
+                    });
+                }
+            },'post',jsonStr)
+        }
+        $('#openWin').click(function () {
+            if (this.className.indexOf('l-btn-disabled')>-1) {
+                return;
+            }
+            var row = $('#tg').treegrid('getSelected');
+            if (row) {
+                matrixList.approveId = row.userId;
+                loadVerifyTable(row.userId);
+            }
+        })
+        // function throttle(method, context) {
+        //     clearTimeout(method.tId);
+        //     method.tId= setTimeout(function(){
+        //         method.call(context);
+        //     }, 100);
+        // }
+        // function resizeWindow () {
+        //     $('#w').window('hcenter');
+        //     $('#w').window('vcenter');
+        //     $('#logDialog').window('hcenter');
+        //     $('#logDialog').window('vcenter');
+        // }
+        // window.onresize = function(){
+        //     throttle(resizeWindow,null);
+        // }
+        // function addEditMatrixUser (jsonStr) {
+            
+        // }
+        function cancelMatrixUser (jsonStr,id) {
+			if ($('#tg').treegrid('getParent',id).id == '0') {
+				eomsGlobal.ajaxFn('/haeoms/view/matrixTree/removeTreeById/'+id,function (res) {
+					if (res.status == '200') {
+					    matrixList.reloadTree();
+					}
+				},'get');
+			} else {
+				eomsGlobal.ajaxFn('/haeoms/view/matrixUser/deleteMatrixUser',function (res) {
+					if (res && res.status == '200') {
+					    matrixList.reloadTree();
+					}
+				},'post',jsonStr);
+			}
+        }
+        // function getFirst (obj){		//obj为我们的对象
+        //     for(var key in obj){
+        //         return obj[key];
+        //     }
+        // }
+        $('.shenhe-confirmbtn').click(function () {
+            // var flagV = getFirst(matrixList.tongguoObj);
+			var flagV =  $("input[name='shenhe']:checked").val();
+			if (flagV==undefined) {
+				$.messager.alert('温馨提示','请选择审核状态');
+				return;
+			}
+            if (flagV=='0' && !$('#shenheArea').val()) {
+                $.messager.alert('温馨提示','请填写未通过原因');
+                return;
+            }
+			var shenheObj;
+			if (flagV=='0') {
+				shenheObj = {// 审核不通过
+				    userid: matrixList.approveId,
+				    approvestate: flagV,
+				    noreason: $('#shenheArea').val(),
+					opratoretype: opratoretypeData[0].opratoretype,
+					id: opratoretypeData[0].id
+				};
+			} else if (flagV=='1') {
+				shenheObj = { // 审核通过
+				    userid: matrixList.approveId,
+				    approvestate: flagV,
+					opratoretype: opratoretypeData[0].opratoretype,
+					id: opratoretypeData[0].id
+				};
+			}
+            var shenheStr = JSON.stringify(shenheObj);
+            eomsGlobal.ajaxFn('/haeoms/view/matrixUser/approveMatrixUser',function (res) {
+                if (res.status == '200') {
+                    $('#w').window('close');
+					matrixList.reloadTree();
+                }
+            },'post',shenheStr);
+        })
+        function easyuiPanelOnMove (left, top) {
+            var l = left;
+            var t = top;
+            if (l < 1) {
+                l = 1;
+            }
+            if (t < 1) {
+                t = 1;
+            }
+            var width = parseInt($(this).parent().css('width')) + 14;
+            var height = parseInt($(this).parent().css('height')) + 14;
+            var right = l + width;
+            var buttom = t + height;
+            var browserWidth = $(window).width();
+            var browserHeight = $(window).height();
+            if (right > browserWidth) {
+                l = browserWidth - width;
+            }
+            if (buttom > browserHeight) {
+                t = browserHeight - height;
+            }
+            $(this).parent().css({/* 修正面板位置 */
+                left : l,
+                top : t
+            });
+        }
+        $.fn.dialog.defaults.onMove = easyuiPanelOnMove;
+        $.fn.window.defaults.onMove = easyuiPanelOnMove;
+        $.fn.panel.defaults.onMove = easyuiPanelOnMove;
+    })
+</script>
+</body>
+</html>

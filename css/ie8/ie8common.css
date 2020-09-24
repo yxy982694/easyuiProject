@@ -1,0 +1,12 @@
+.panel-tool .panel-tool-close{
+	background: none !important;
+	width: 17px !important;
+	height: 17px !important;
+}
+.panel-tool .panel-tool-close:before{
+	content:' × ';
+	display: inline-block;
+	font-size: 20px;
+	color: #000;
+	margin-top: -6px;
+}

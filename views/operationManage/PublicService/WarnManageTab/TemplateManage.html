@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../images/yidong.png">
+    <title>欢迎使用集中运维管理系统</title>
+    <link rel="stylesheet" href="../../../../css/easyui.min.css">
+    <link rel="stylesheet" href="../../../../css/icon.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/idangerous.swiper.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../css/modifyStyle.css" />
+
+    <!-- <link rel="stylesheet" href="../../../../css/index.css"> -->
+    <!--[if lt IE 9]>
+		  <link rel="stylesheet" href="../css/ie8/home/indexminheight980.css" media="screen and (min-height:980px)">
+		  <link rel="stylesheet" href="../css/ie8/home/ie8home.css">
+		<![endif]-->
+    <!--[if lte IE 9]>
+		  <link rel="stylesheet" href="../css/ie8/ie8_ie9common.css">
+		  <link rel="stylesheet" href="../css/ie8/home/ie8_ie9home.css">
+		  <link rel="stylesheet" href="../css/ie8/home/ie8_ie9indexminwidth1500.css" media="screen and (min-width:1500px)">
+		  <link rel="stylesheet" href="../css/ie8/home/ie8_ie9indexminwidth1800.css" media="screen and (min-width:1800px)">
+		<![endif]-->
+    <style type="text/css">
+      /* 搜索框样式 */
+      .centerMainBox {
+        padding: 0px 15px;
+      }
+
+      .topBox {
+        overflow: hidden;
+        /* height: 50px; */
+        /* padding: 10px 0px; */
+      }
+
+      .top-left-box {
+        float: left;
+        padding: 15px;
+        width: 80%;
+      }
+
+      .top-right-box {
+        float: right;
+        width: 20%;
+      }
+
+      .formOneWidth {
+        width: 100% !important;
+      }
+
+      .searchFormLabel {
+        display: inline-block;
+        width: 70px;
+        text-align: right;
+      }
+
+      .searchFormLabelHeight {
+        display: inline-block;
+        width: 70px;
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .formOne input {
+        width: 80% !important;
+        /* height: 25px !important;
+        line-height: 25px !important; */
+        border-radius: 3px !important;
+        font-size: 12px !important;
+        outline-style: none;
+        border: 1px solid #dcdfe6;
+        padding: 4px 6px;
+
+      }
+
+      input:focus {
+        outline-style: none;
+        border: 1px solid #409eff !important;
+      }
+
+      textarea {
+        width: 80% !important;
+        height: 80px;
+        border: 1px solid #dcdfe6;
+        border-radius: 3px !important;
+        font-size: 13px !important;
+        padding: 5px;
+      }
+
+      textarea:focus {
+        outline-style: none;
+        border: 1px solid #409eff !important;
+      }
+
+
+      /* pulic */
+      .textbox-label {
+        font-size: 12px !important;
+      }
+
+      .left-right-box {
+
+        overflow: hidden;
+      }
+
+      .left-box {
+        float: left;
+        width: 50%;
+      }
+
+      .left-box input {
+        width: 60% !important;
+        outline-style: none !important;
+        /* height: 25px !important;
+        line-height: 25px !important; */
+        border-radius: 3px !important;
+        border: 1px solid #dcdfe6;
+        font-size: 12px !important;
+        padding: 4px 6px;
+      }
+
+
+      .right-box {
+        float: left;
+        width: 50%;
+      }
+
+      .right-box select {
+        width: 60% !important;
+        border-radius: 3px !important;
+        font-size: 12px !important;
+        padding: 4px 6px;
+        border: 1px solid #dcdfe6;
+      }
+
+      .right-box .textbox-label {
+        text-align: right !important;
+      }
+
+      .dialogTextarea .textbox,
+      .dialogTextarea .textbox-text {
+        width: calc(100% - 80px) !important;
+        height: 120px;
+        /* border-radius: 0px !important; */
+        font-size: 12px !important;
+      }
+
+      .padding-top40px {
+        padding-top: 40px;
+      }
+
+      .padding-top20px {
+        padding-top: 20px;
+      }
+
+      .margin-bottom10px {
+        margin-bottom: 10px;
+      }
+
+      .margin-bottom13px {
+        margin-bottom: 13px;
+      }
+
+      h5 {
+        margin: 15px 0px 5px 0px;
+        font-size: 12px !important;
+      }
+
+      /* 按钮样式 */
+      .eoms-datagrid-btn {
+        display: inline-block;
+        padding: 0px 8px;
+        color: #409eff;
+      }
+
+
+      .eoms-datagrid-btn:hover {
+        color: #3d94ff;
+
+      }
+
+      .table-box .datagrid-cell {
+        height: 22px !important;
+        line-height: 20px;
+      }
+
+      /* 按钮 */
+      .formBtn {
+        display: inline-block;
+        padding: 0px 15px;
+        line-height: 25px;
+        text-align: center;
+        cursor: pointer;
+        background-color: #409eff;
+        color: #fff;
+        font-size: 12px;
+        text-decoration: none;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+      }
+
+      .formBtnWidth {
+        width: 33%;
+      }
+
+      .formBtn:hover {
+        background-color: #66b1ff;
+      }
+
+      .easyui-layout .window {
+        border: none !important;
+      }
+
+      /* 此标签的初始宽度为10000px,需改为百分百,表格列的宽度设置百分比才有效 */
+      /* .datagrid-header-inner{
+        width: 100%;
+      }
+      .datagrid-htable, .datagrid-btable, .datagrid-ftable {
+          color: #000;
+          border-collapse: separate;
+          width: 100%;
+      } */
+      /* 表格头部及左侧序号去掉背景色 */
+      /* .centerMainBox .datagrid-header,
+      .centerMainBox .datagrid-td-rownumber {
+        background-color: #fff !important;
+        background: none !important;
+        font-weight: bold;
+      } */
+
+      /* 表格边框样式 */
+      .datagrid-header td,
+      .datagrid-body td,
+      .datagrid-footer td {
+        border-color: #ebeef5;
+        border-width: 0 1px 1px 0;
+        border-style: solid;
+        margin: 0;
+        padding: 0;
+      }
+
+      .formTextLabel {
+        display: inline-block;
+        width: 80px;
+      }
+
+      .diaBtnBox {
+        text-align: right;
+        padding-top: 15px;
+      }
+
+      .table-box .datagrid {
+        border: 1px solid #DCDFE6 !important;
+      }
+
+      /*  .searchFormBox {
+        overflow: hidden;
+        position: relative;
+        margin: 15px;
+
+      }
+ */
+      .searchFormBox {
+        position: relative;
+        border: 1px solid #e5e5e5;
+        margin-top: 15px;
+        padding: 10px 0px;
+      }
+
+      .left-top-title {
+        position: absolute;
+        left: 20px;
+        top: -2px;
+      }
+
+      .searchFormBox-title {
+        overflow: hidden;
+        padding: 0px 15px;
+        line-height: 23px;
+        background-color: #409eff;
+        color: #fff;
+      }
+
+      .left-title {
+        position: absolute;
+        left: 5px;
+        top: -9px;
+        background-color: #fff;
+        padding: 0px 5px;
+        font-weight: 600;
+      }
+
+      .right-icon {
+        float: right;
+        cursor: pointer;
+      }
+
+      .searchFormBox-content {
+        overflow: hidden;
+      }
+
+      ul li {
+        list-style: none;
+        float: left;
+        margin: 0px 10px 10px 0px;
+        width: 35%;
+      }
+
+      ul li input {
+        width: 70% !important;
+        outline-style: none !important;
+        height: 28px;
+        line-height: 28px;
+        border-radius: 3px !important;
+        border: 1px solid #dcdfe6;
+        font-size: 12px !important;
+        padding: 4px 6px;
+      }
+
+      ul li select {
+        outline: none;
+        width: 70% !important;
+        height: 28px;
+        line-height: 28px;
+        border-radius: 3px !important;
+        font-size: 12px !important;
+        padding: 4px 6px;
+        border: 1px solid #dcdfe6;
+      }
+    </style>
+  </head>
+  <body class="easyui-layout">
+    <div id='Loading'>
+      <img class="load-img" src='../../../../images/loading.gif' />加载中···
+    </div><!-- 130px -->
+    <div data-options="region:'center',border:false" style="background:#fff;padding:3px;">
+      <!-- <table id="dg" data-options="border:false" style="padding:5px;"></table> -->
+      <div class="centerMainBox">
+        <div class="topBox">
+          <div id="searchFormBox" class="searchFormBox">
+            <!-- <span id="" class="left-top-title">
+            模板查询
+          </span> -->
+
+            <span class="left-title">模板查询</span>
+            <!-- <img style="width: 12px ;height: 15px;padding-top: 3px;" onclick="showSearch(this)" class="right-icon" src='../../../../images/arrow-up.png' /> -->
+
+            <div id="" class="searchFormBox-content">
+              <ul>
+                <li><span id="" class="searchFormLabel">
+                    预警标题：
+                  </span>
+                  <input id="searchTitle" class="" style="" labelPosition="before" placeholder="">
+                </li>
+                <li><span id="" class="searchFormLabel">
+                    预警模板：
+                  </span>
+                  <input id="searchMoban" class="" style="" labelPosition="before" placeholder="">
+                </li>
+                <li>
+                  <span id="" class="searchFormLabel">
+                    创建人：
+                  </span>
+                  <input id="searchPerson" class="" style="">
+                </li>
+                <li> <span id="" class="searchFormLabel">
+                    状态：
+                  </span>
+                  <select id="searchState" class="" name="state" style="" label="状态">
+                    <option value="">选择</option>
+                    <option value="1">有效</option>
+                    <option value="0">无效</option>
+                  </select></li>
+                <li style="width: 200px;">
+
+                  <a id="" href="#" class="formBtn formBtnWidth" data-options="" onclick="searchTemplateForm()">查询</a>
+                  &nbsp;&nbsp;&nbsp;
+                  <a id="" href="#" class="formBtn formBtnWidth" data-options="" onclick="openDialog()">新建</a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <!-- <h5>模板管理</h5>
+          <div id="" class="top-left-box">
+            <div class="formOneWidth formOne margin-bottom10px">
+              <span id="" class="searchFormLabel">
+                预警标题：
+              </span>
+              <input id="searchTitle" class="" style="" labelPosition="before" placeholder="支持模糊查询">
+            </div>
+            <div class="formOneWidth formOneTextarea margin-bottom10px">
+              <span class="searchFormLabelHeight">预警模板：</span>
+              <textarea id="searchMoban" placeholder="支持模糊查询"></textarea>
+            </div>
+            <div class="formOneWidth left-right-box">
+              <div class="left-box">
+                <span id="" class="searchFormLabel">
+                  创建人：
+                </span>
+                <input id="searchPerson" class="" style="">
+              </div>
+              <div class="right-box">
+                <span id="" class="searchFormLabel">
+                  状态：
+                </span>
+                <select id="searchState" class="" name="state" style="" label="状态">
+                  <option ></option>
+                  <option value="1">有效</option>
+                  <option value="0">无效</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+          <div id="" class="top-right-box">
+            <div id="top-right-boxBtn">
+              <div class="padding-top40px">
+                <a id="" href="#" class="formBtn" data-options="" onclick="searchTemplateForm()"><i class="fa fa-search"></i>&nbsp;查询</a>
+              </div>
+              <div class="padding-top20px">
+                <a id="" href="#" class="formBtn" data-options="" onclick="openDialog()"><i class="fa fa-plus"></i>&nbsp;新建</a>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div class="bottomBox">
+          <h5>预警模板列表</h5>
+          <div class="table-box">
+            <table id="dg" class="easyui-datagrid" data-options="border:false" style="width:100%;height:300px;padding:5px;"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-options="region:'south',border:false" style="height:50px;padding:3px;">
+      <div id="pp"></div>
+    </div>
+    <div id="dlg" modal="true" class="easyui-dialog" title="模板新建" data-options="" style="width:680px;height:350px;padding:10px">
+      <div id="dialogForm" class="dialogBox">
+        <input id="templateId" type="hidden" name="" value="" />
+        <div class="formOneWidth  formOne margin-bottom13px">
+          <span id="" class="formTextLabel" style="width: 70px;">
+            预警标题：
+          </span>
+          <input id="mouldtitle" class="" style=""  onblur='titleblur()' labelPosition="before" placeholder="">
+        </div>
+        <div class="formOneWidth  dialogTextarea margin-bottom13px">
+          <span class="searchFormLabelHeight">预警模板：</span>
+          <textarea id="mouldcontent" style="height: 120px;font-size: 12px;">
+          </textarea>
+        </div>
+        <div class="formOneWidth  left-right-box margin-bottom13px">
+          <div class="left-box">
+            <span id="" class="formTextLabel">
+              操作人：
+            </span>
+            <span id="createuser">
+
+            </span>
+          </div>
+          <div class="right-box">
+            <span id="" class="formTextLabel" style="width: 120px;">
+              操作人所属部门：
+            </span>
+            <span id="operorgan">
+            </span>
+          </div>
+        </div>
+        <div class="formOneWidth  left-right-box margin-bottom10px">
+          <div class="left-box">
+            <span id="" class="formTextLabel">
+              操作时间
+            </span>
+            <span id="updatetime">
+            </span>
+          </div>
+
+        </div>
+        <div class=" diaBtnBox ">
+          <a id="btnType" href="#" class="formBtn" data-options="" onclick="saveForm()">保存</a>
+          &emsp;
+          <a id="" href="#" class="formBtn" data-options="" onclick="closeDialog()">取消</a>
+        </div>
+      </div>
+    </div>
+    <div id="dlgSee" modal="true" class="easyui-dialog" title="模板查看" data-options="" style="width:680px;height:350px;padding:10px">
+      <div id="dialogForm" class="dialogBox">
+        <div class="formOneWidth  formOne margin-bottom13px">
+          <span id="" class="formTextLabel" style="width: 70px;">
+            预警标题：
+          </span>
+          <input id="mouldtitle1" class="" style="border: none;"   labelPosition="before" placeholder="">
+        </div>
+        <div class="formOneWidth  dialogTextarea margin-bottom13px">
+          <span class="searchFormLabelHeight">预警模板：</span>
+          <textarea id="mouldcontent1" style="height: 120px;font-size: 12px;border:none">
+          </textarea>
+        </div>
+        <div class="formOneWidth  left-right-box margin-bottom13px">
+          <div class="left-box">
+            <span id="" class="formTextLabel">
+              操作人：
+            </span>
+            <span id="createuser1">
+
+            </span>
+          </div>
+          <div class="right-box">
+            <span id="" class="formTextLabel" style="width: 120px;">
+              操作人所属部门：
+            </span>
+            <span id="operorgan1">
+            </span>
+          </div>
+        </div>
+        <div class="formOneWidth  left-right-box margin-bottom10px">
+          <div class="left-box">
+            <span id="" class="formTextLabel">
+              操作时间
+            </span>
+            <span id="updatetime1">
+            </span>
+          </div>
+
+        </div>
+        <div class=" diaBtnBox ">
+          <a id="btnType" href="#" class="formBtn" data-options="" onclick="saveForm()">保存</a>
+          &emsp;
+          <a id="" href="#" class="formBtn" data-options="" onclick="closeDialog()">取消</a>
+        </div>
+      </div>
+    </div>
+    <!--[if lt IE 9]>
+		  <script src="../js/ie8/html5shiv.min.js"></script>
+		  <script src="../js/ie8/css3-mediaqueries.js"></script>
+		<![endif]-->
+    <script type="text/javascript">
+      if (navigator.userAgent.indexOf("MSIE 8.0") > -1 || navigator.userAgent.indexOf("MSIE 9.0") > -1) {
+        document.write('<script src="../../../../js/ie8/jquery.1.7.2.min.js"><\/script>');
+      } else {
+        document.write('<script src="../../../../js/jquery-3.3.1.min.js"><\/script>');
+      }
+    </script>
+    <script src="../../../../js/jquery.easyui.min.js"></script>
+    <script src="../../../../js/easyui-lang-zh_CN.js"></script>
+    <script src="../../../../js/idangerous.swiper.min.js"></script>
+    <script src="../../../../js/jquery.cookie.js"></script>
+    <!-- <script src="../../../../js/http/baseUrl.js"></script> -->
+    <!-- <script src="../../../../js/JExhibition.js"></script> -->
+    <script src="../../../../js/global.js"></script>
+    <script src="../../../../js/table/tablePagination.js"></script>
+    <!-- <script src="../js/index.js"></script> -->
+    <script type="text/javascript">
+      function closes() {
+        $("#Loading").fadeOut("normal", function() {
+          $(this).remove();
+        });
+      }
+      var pc;
+      $.parser.onComplete = function() {
+        if (pc) clearTimeout(pc);
+        pc = setTimeout(closes, 500);
+      }
+      //判断是否为空对象
+      function isNULL(o) {
+        if (typeof(o) == "object") {
+          return o == undefined || o == null || o.length == 0;
+        };
+        if (typeof(o) == "string") {
+          return o == undefined || o == null || o.toUpperCase() == "NULL" || o == ""
+        }
+        return o == undefined || o == null;
+      }
+
+      function notNULL(o) {
+        return !isNULL(o);
+      }
+
+      Date.prototype.Format = function (fmt) {
+          var o = {
+              "M+": this.getMonth() + 1, //月份
+              "d+": this.getDate(), //日
+              "H+": this.getHours(), //小时
+              "m+": this.getMinutes(), //分
+              "s+": this.getSeconds(), //秒
+              "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+              "S": this.getMilliseconds() //毫秒
+          };
+          if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+          for (var k in o)
+          if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+          return fmt;
+      }
+      //验证标题是否重复
+      //wrm/eomsWarnMould/isOneMould/{mouldTitle}
+      function titleblur(){
+        var mouldtitle = $("#mouldtitle").val();
+        var qudiao = mouldtitle.replace(/\s+/g,"");
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/isOneMould/' + qudiao, function(res) {
+          if (res.code == '0') {
+
+          } else {
+             $("#mouldtitle").val("");
+            $.messager.confirm('提示信息', res.msg, function(r) {});
+            return false;
+          }
+        }, 'get');
+      }
+      //dialog 关闭
+      function closeDialog() {
+        $('#dlg').dialog('close');
+      }
+      //dialog 打开
+      function openDialog() {
+        isShowBtn();
+        $('#dlg').dialog({
+          title: '模板新建',
+          closed: false,
+        });
+        $('#dlg').dialog('open');
+        $('#btnType').text('保存')
+        clearForm();
+        userInfo();
+      }
+      //清空 表单
+      function clearForm() {
+        /* $("#dialogForm").JExhibition("clear"); */
+        $("#templateId").val("");
+        $("#mouldtitle").val(""); //标题
+        $("#mouldcontent").val(""); //模板内容
+        $("#createuser").text("");
+        $("#updatetime").text("");
+        $("#operorgan").text("");
+      }
+      //保存提交数据
+      function saveForm() {
+        var formData = {};
+        var templateId = $("#templateId").val();
+        if (notNULL(templateId)) {
+          formData['id'] = templateId;
+        }
+        var mouldtitle = $("#mouldtitle").val(); //标题
+        if (notNULL(mouldtitle)) {
+          formData['mouldtitle'] = mouldtitle;
+        }else{
+          $.messager.confirm('提示信息', '请填写标题！', function(r) {
+
+          });
+          return false;
+        }
+        var mouldcontent = $("#mouldcontent").val(); //模板内容
+        if (notNULL(mouldcontent)) {
+          formData['mouldcontent'] = mouldcontent;
+        } else {
+          $.messager.confirm('提示信息', '请填写模板！', function(r) {
+
+          });
+          return false;
+        }
+        var createuser = $("#createuser").text();
+        if (notNULL(createuser)) {
+          formData['createuser'] = createuser;
+        }
+        var updatetime = $("#updatetime").text();
+        if (notNULL(updatetime)) {
+          formData['updatetime'] = updatetime;
+        }
+        var operorgan = $("#operorgan").text();
+        if (notNULL(operorgan)) {
+          formData['operorgan'] = operorgan;
+        }
+
+        var jsonStr = JSON.stringify(formData);
+        //console.log(jsonStr);
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/addMould', function(res) {
+          if (res.code == 0) {
+            $.messager.confirm('提示信息', '操作成功', function(r) {
+              if (r) {
+                clearForm();
+                $("#templateId").val("");
+                closeDialog();
+              }
+            });
+            initTable(1);
+          } else {
+            $.messager.confirm('提示信息', '操作失败', function(r) {});
+          }
+
+        }, 'post', jsonStr)
+
+      }
+
+      // 查询数据
+      function searchTemplateForm() {
+        var jsonObj = {};
+        var searchTitle = $("#searchTitle").val();
+        if (notNULL(searchTitle)) {
+          jsonObj['mouldtitle'] = searchTitle;
+        }
+        var searchMoban = $("#searchMoban").val();
+        if (notNULL(searchMoban)) {
+          jsonObj['mouldcontent'] = searchMoban;
+        }
+        var searchPerson = $("#searchPerson").val();
+        if (notNULL(searchPerson)) {
+          jsonObj['createuser'] = searchPerson;
+        }
+        var searchState = $("#searchState").val();
+        if (notNULL(searchState)) {
+          jsonObj['state'] = searchState;
+        }
+
+        //分页信息
+        jsonObj['pageSize'] = 16;
+        jsonObj['currentPage'] = 1;
+        var searchStr = JSON.stringify(jsonObj);
+        //console.log(searchStr + "------")
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/findMould', function(res) {
+          if (res.code == 0) {
+            loadTable(res.data);
+
+            easyuiTable.loadPage({
+              $page: $('#pp'),
+              total: res.total,
+              pageSize: 16,
+              callBackFn: loadFulData
+            });
+          }
+        }, 'post', searchStr);
+      }
+      //表格按钮
+
+      function showUser() {
+        $('#dlg').dialog({
+          title: '模板修改',
+          closed: false,
+        });
+        $('#dlg').dialog('open');
+        $('#btnType').text('修改')
+      }
+
+      function isShowBtn() {
+        $(".diaBtnBox").show()
+      }
+
+      function notShowBtn() {
+        $(".diaBtnBox").hide()
+      }
+
+      function see(row) {
+
+        $('#dlgSee').dialog('open');
+        notShowBtn();
+        $("#mouldtitle1").val(row.mouldtitle);
+        $("#mouldcontent1").val(row.mouldcontent);
+        $("#createuser1").text(row.createuser);
+        $("#updatetime1").text(row.updatetime);
+        $("#operorgan1").text(row.operorgan);
+      }
+      //编辑
+      function editTemplate(row) {
+        showUser();
+        isShowBtn();
+        $("#templateId").val(row.id);
+        $("#mouldtitle").val(row.mouldtitle);
+        $("#mouldcontent").val(row.mouldcontent);
+        $("#createuser").text(row.createuser);
+        $("#updatetime").text(row.updatetime);
+        $("#operorgan").text(row.operorgan);
+      }
+      //作废
+      function dele(row) {
+        $.messager.confirm('确认作废', '该模板确定作废？', function(r) {
+          if (r) {
+            eomsGlobal.ajaxFn('/haeoms//wrm/eomsWarnMould/cancelMould/' + row.id, function(res) {
+              loadFulData(1)
+              if (res.code == '0') {
+                messageText("已成功作废！");
+              } else {
+                messageText("抱歉，操作失败！");
+              }
+            }, 'get');
+          }
+        });
+      }
+
+      function messageText(text) {
+        $.messager.confirm('提示信息', text, function(r) {
+          if (r) {}
+        });
+      }
+      function twoDigits(val) {
+          if (val < 10) return "0" + val;
+          return val;
+      }
+
+
+      //用户信息
+      function userInfo(){
+      eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnInfo/findPublishPerson', function(res) {    
+       if(res.code == '200'){
+         var time2 = new Date().Format("yyyy-MM-dd HH:mm:ss");
+         $("#createuser").text(res.data.username);
+         $("#operorgan").text(res.data.organName);
+         $("#updatetime").text(time2);
+       }
+      }, 'post');
+      }
+      //监听窗口大小变化
+      window.onresize = function() {
+        setTimeout(domresize, 300);
+      };
+      //改变表格宽高
+      function domresize() {
+        var tableHeight = $("body").height() - $(".topBox").height() - $(".bottomBox h5").height() - 4;
+        $('#dg').datagrid('resize', {
+          height: tableHeight,
+          width: $(".bottomBox").width()
+        });
+      }
+
+      var totalPage = 0;
+
+      function loadFulData(currentPage) {
+        var jsonObj = {
+          currentPage: currentPage,
+          pageSize: 16
+        };
+        var searchTitle = $("#searchTitle").val();
+        if (notNULL(searchTitle)) {
+          jsonObj['mouldtitle'] = searchTitle;
+        }
+        var searchMoban = $("#searchMoban").val();
+        if (notNULL(searchMoban)) {
+          jsonObj['mouldcontent'] = searchMoban;
+        }
+        var searchPerson = $("#searchPerson").val();
+        if (notNULL(searchPerson)) {
+          jsonObj['createuser'] = searchPerson;
+        }
+        var searchState = $("#searchState").val();
+        if (notNULL(searchState)) {
+          jsonObj['state'] = searchState;
+        }
+        var jsonStr = JSON.stringify(jsonObj);
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/findMould', function(res) {
+          loadTable(res.data);
+          easyuiTable.loadPage({
+            $page: $('#pp'),
+            total: res.total,
+            pageSize: 16,
+            callBackFn: loadFulData
+          });
+        }, 'post', jsonStr);
+      }
+
+      function initTable(currentPage) {
+        var jsonObj = {
+          currentPage: currentPage,
+          pageSize: 16
+        };
+        var jsonStr = JSON.stringify(jsonObj);
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/findMould', function(res) {
+          loadTable(res.data);
+          easyuiTable.loadPage({
+            $page: $('#pp'),
+            total: res.total,
+            pageSize: 16,
+            callBackFn: loadFulData
+          });
+        }, 'post', jsonStr);
+      }
+
+      function initGridHeight(obj) {
+        if (obj != null) {
+          $(window).on("resize", function() {
+            try {
+              var initTableHeight = $("body").height() - $(".topBox").height() - $(".bottomBox h5").height() - 80;
+              var options = $(obj).datagrid('options');
+              if (options != null) {
+                if (options.fit) {
+                  $(obj).parents("div.datagrid-wrap:first").css({
+                    height: initTableHeight + 'px'
+                  });
+                  $(obj).datagrid("resize");
+                }
+              }
+            } catch (e) {
+              return false;
+            }
+          }).trigger("resize");
+        }
+      }
+
+
+      function loadTable(upcomlistData) {
+        $('#dg').datagrid({
+          data: upcomlistData,
+          fit: true,
+          fitColumns: true,
+          singleSelect: true,
+          border: false,
+          columns: [
+            [ {
+                field: 'createuser',
+                title: '操作人',
+                width: '10%',
+                align: 'center'
+              },
+              {
+                field: 'updatetime',
+                title: '操作时间',
+                width: '16%',
+                align: 'center'
+              },
+              {
+                field: 'mouldtitle',
+                title: '预警标题',
+                width: '24%',
+                align: 'center'
+              },
+              {
+                field: 'mouldcontent',
+                title: '预警模板',
+                width: '26%',
+                align: 'center',
+                formatter: function(val, row, index) {
+                  var s = "";
+                  if (notNULL(row.mouldcontent)) {
+                    s = row.mouldcontent;
+                  }
+                  //<a href="#" title="This is the tooltip message." class="easyui-tooltip">Hover me title='" + s + "'</a>
+                  var t = "<span style='cursor:pointer'    class='easyui-tooltip titletip" + row.id + "'>" + s +
+                    " </span>";
+                  return t;
+                }
+              },
+              {
+                field: 'state',
+                title: '状态',
+                width: '10%',
+                align: 'center',
+                formatter: function(val, row, index) {
+                  var s = ""
+                  if (val == 1) {
+                    s = "<span>有效</span>"
+
+                  } else {
+                    s = "<span>无效</span>"
+                  }
+                  return s;
+                }
+              },
+              {
+                field: 'operator',
+                title: '操作',
+                width: '14%',
+                align: 'left',
+                formatter: function(val, row, index) {
+
+                  var dataDetail = JSON.stringify(row).replace(/"/g, '&quot;');
+                  var s;
+                  if (row.state == 1) {
+                    s =
+                      '<a href="javascript:void(0)" class="eoms-datagrid-btn editBtn" onclick="editTemplate(' +
+                      dataDetail +
+                      ')">编辑</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="eoms-datagrid-btn deleteBtn" onclick="dele(' +
+                      dataDetail +
+                      ')">作废</a>';
+                  } else {
+                    s = '<a href="javascript:void(0)" class="eoms-datagrid-btn seeBtn" onclick="see(' +
+                      dataDetail +
+                      ')">查看</a>';
+                  }
+
+                  return s;
+                }
+              }
+            ]
+          ],
+          onLoadSuccess: function(data) {
+            $.each(data.rows, function(i, v) {
+              var s = "";
+              if (notNULL(v.mouldcontent)) {
+                s = v.mouldcontent;
+              }
+              $(".titletip" + v.id).tooltip({
+                position: 'top',
+                deltaX: 0, //deltaX number 水平方向提示框的位置。默认为 0
+                deltaY: 0, //deltaY number 垂直方向提示框的位置。默认为 0
+                content: '<span >' + s + '</span>',
+                onShow: function() {
+                  $(this).tooltip('tip').css({
+                    width: 'auto',
+                    boxShadow: '1px 1px 3px #292929',
+                  });
+                }
+              });
+            })
+          }
+        })
+        // 加载表格
+        $('#dg').datagrid();
+        initGridHeight('#dg');
+      }
+
+      //自执行函数
+      $(function() {
+        $('#dlg').dialog('close')
+        $('#dlgSee').dialog('close')
+        loadFulData(1);
+        userInfo();
+      });
+    </script>
+  </body>
+</html>

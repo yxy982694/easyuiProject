@@ -1,0 +1,2066 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../images/yidong.png">
+    <title>欢迎使用集中运维管理系统</title>
+    <link rel="stylesheet" href="../../../../css/easyui.min.css">
+    <link rel="stylesheet" href="../../../../css/icon.css">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../css/idangerous.swiper.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../css/modifyStyle.css" />
+
+    <!-- <link rel="stylesheet" href="../../../../css/index.css"> -->
+    <!--[if lt IE 9]>
+		  <link rel="stylesheet" href="../css/ie8/home/indexminheight980.css" media="screen and (min-height:980px)">
+		  <link rel="stylesheet" href="../css/ie8/home/ie8home.css">
+		<![endif]-->
+    <!--[if lte IE 9]>
+		  <link rel="stylesheet" href="../css/ie8/ie8_ie9common.css">
+		  <link rel="stylesheet" href="../css/ie8/home/ie8_ie9home.css">
+		  <link rel="stylesheet" href="../css/ie8/home/ie8_ie9indexminwidth1500.css" media="screen and (min-width:1500px)">
+		  <link rel="stylesheet" href="../css/ie8/home/ie8_ie9indexminwidth1800.css" media="screen and (min-width:1800px)">
+		<![endif]-->
+    <style type="text/css">
+      /* 搜索框样式 */
+      .centerMainBox {
+        padding: 0px 15px;
+      }
+
+      .topBox {
+        overflow: hidden;
+      }
+
+      .top-left-box {
+        float: left;
+        /* border: 1px solid #0099FF; */
+        padding: 15px 0px;
+        width: 100%;
+      }
+
+      .top-right-box {
+        float: right;
+        /* border: 1px solid #0099FF; */
+        width: 20%;
+      }
+
+      .formOneWidth {
+        width: 100% !important;
+      }
+
+      .searchFormLabel {
+        display: inline-block;
+        width: 80px;
+        text-align: right;
+      }
+
+      .searchFormLabelHeight {
+        display: inline-block;
+        width: 80px;
+        height: 60px;
+        line-height: 60px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .formOne input {
+        width: 80% !important;
+        border-radius: 3px !important;
+        font-size: 12px !important;
+        outline-style: none;
+        border: 1px solid #dcdfe6;
+        padding: 4px 6px;
+      }
+
+      .formTWO input {
+        width: 170px !important;
+        border-radius: 3px !important;
+        font-size: 12px !important;
+        outline-style: none;
+        border: 1px solid #dcdfe6;
+        padding: 4px 6px;
+      }
+
+      input:focus {
+        outline-style: none;
+        border: 1px solid #409eff !important;
+      }
+
+      textarea {
+        width: 80% !important;
+        height: 80px;
+        border: 1px solid #dcdfe6;
+        border-radius: 3px !important;
+      }
+
+      textarea:focus {
+        outline-style: none;
+        border: 1px solid #409eff !important;
+      }
+
+      /* pulic */
+      .textbox-label {
+        font-size: 12px !important;
+      }
+
+      .left-right-box {
+        overflow: hidden;
+      }
+
+      .left-box {
+        float: left;
+        width: 50%;
+      }
+
+      .left-box input {
+        width: 60% !important;
+        outline-style: none !important;
+        border-radius: 3px !important;
+        border: 1px solid #dcdfe6;
+        font-size: 12px !important;
+        padding: 4px 6px;
+      }
+
+      .float-left-box {
+        float: left;
+      }
+
+      .float-left-box input {
+        width: 170px !important;
+        outline-style: none !important;
+        border-radius: 3px !important;
+        border: 1px solid #dcdfe6;
+        font-size: 12px !important;
+        padding: 4px 6px;
+      }
+
+      .common-input {
+        outline-style: none !important;
+        border-radius: 3px !important;
+        border: 1px solid #dcdfe6;
+        font-size: 12px !important;
+        padding: 4px 6px !important;
+      }
+
+      .right-box {
+        float: left;
+        width: 50%;
+      }
+
+      .float-right-box {
+        float: left;
+      }
+
+      .right-box select {
+        width: 60% !important;
+        border-radius: 3px !important;
+        font-size: 12px !important;
+        padding: 4px 6px;
+        border: 1px solid #dcdfe6;
+      }
+
+      .float-right-box select {
+        width: 170px !important;
+        border-radius: 3px !important;
+        font-size: 12px !important;
+        padding: 4px 6px;
+        border: 1px solid #dcdfe6;
+      }
+
+      .right-box .textbox-label {
+        text-align: right !important;
+      }
+
+      .dialogTextarea .textbox,
+      .dialogTextarea .textbox-text {
+        width: calc(100% - 80px) !important;
+        height: 120px;
+        /* border-radius: 0px !important; */
+        font-size: 12px !important;
+      }
+
+      .padding-top40px {
+        padding-top: 40px;
+      }
+
+      .padding-top20px {
+        padding-top: 20px;
+      }
+
+      .margin-bottom10px {
+        margin-bottom: 10px;
+      }
+
+      .margin-bottom13px {
+        margin-bottom: 13px;
+      }
+
+      h5 {
+        margin: 15px 0px 5px 0px;
+        font-size: 12px !important;
+      }
+
+      /* 按钮样式 */
+      .eoms-datagrid-btn {
+        display: inline-block;
+        padding: 0px 8px;
+        color: #409eff;
+      }
+
+      .eoms-datagrid-btn:hover {
+        color: #3d94ff;
+      }
+
+      .table-box .datagrid-cell {
+        height: 22px !important;
+        line-height: 20px;
+      }
+
+      /* 按钮 */
+      .formBtn {
+        display: inline-block;
+        padding: 0px 15px;
+        line-height: 28px;
+        text-align: center;
+        cursor: pointer;
+        background-color: #409eff;
+        color: #fff;
+        font-size: 12px;
+        text-decoration: none;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+      }
+
+      .formBtnWidth {
+        width: 33%;
+      }
+
+      .formBtn:hover {
+        background-color: #66b1ff;
+      }
+
+      .easyui-layout .window {
+        border: none !important;
+      }
+
+      .left-box .textbox {
+        width: 60% !important;
+        height: 25px !important;
+        line-height: 25px !important;
+        border-radius: 3px !important;
+      }
+
+      .left-box .textbox .textbox-text {
+        width: 100% !important;
+        height: 23px !important;
+        line-height: 25px !important;
+
+      }
+
+      .float-left-box .textbox {
+        width: 70% !important;
+        height: 25px !important;
+        line-height: 25px !important;
+        border-radius: 3px !important;
+      }
+
+      .float-left-box .textbox .textbox-text {
+        width: 100% !important;
+        height: 23px !important;
+        line-height: 25px !important;
+
+      }
+
+      /* 表格边框样式 */
+      .datagrid-header td,
+      .datagrid-body td,
+      .datagrid-footer td {
+        border-color: #ebeef5;
+        border-width: 0 1px 1px 0;
+        border-style: solid;
+        margin: 0;
+        padding: 0;
+      }
+
+      .formTextLabel {
+        display: inline-block;
+        width: 80px;
+      }
+
+      .formTextLabel100 {
+        display: inline-block;
+        width: 100px;
+      }
+
+      .diaBtnBox {
+        text-align: center;
+        padding-top: 15px;
+      }
+
+      .textbox-label {
+        width: 85px !important;
+      }
+
+      /* 弹框label */
+      .dialogFormLabel {
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+
+      .moban {
+        color: #00aaff;
+        cursor: pointer;
+      }
+
+      /* 菜单树 */
+      .tree-folder,
+      .tree-file {
+        background: none !important;
+        width: 0px !important;
+      }
+
+      .concatTreeBox {
+        height: 320px;
+        overflow: auto;
+      }
+
+      .table-box .datagrid {
+        border: 1px solid #DCDFE6 !important;
+      }
+
+      .notborder {
+        border: 1px solid #fff !important;
+      }
+
+      /* 模拟输入框的边框 */
+      .dialogFormTextarea {
+        border: 1px solid #dcdfe6 !important;
+        height: 122px;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+      }
+
+      .inputShow {
+        display: inline-block;
+        width: 420px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+      }
+
+      div {
+        outline: none;
+      }
+
+      .commonbox {
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+      }
+
+      .searchFormBox {
+        position: relative;
+        border: 1px solid #e5e5e5;
+        margin-top: 15px;
+      }
+
+      .left-top-title {
+        position: absolute;
+        left: 20px;
+        top: -2px;
+      }
+
+      .left-title {
+        position: absolute;
+        left: 5px;
+        top: -9px;
+        background-color: #fff;
+        padding: 0px 5px;
+        font-weight: 600;
+      }
+
+      .right-icon {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        padding: 0px 5px;
+        cursor: pointer;
+      }
+
+      .searchFormBox-content {
+        overflow: hidden;
+        padding: 10px 0px;
+      }
+
+      ul {
+        margin: 0;
+      }
+
+      .searchFormBox-content ul li {
+        list-style: none;
+        float: left;
+        margin: 5px 10px 5px 0px;
+        width: 30%;
+      }
+
+      .searchFormBox-content ul li input {
+        width: 70% !important;
+        outline-style: none !important;
+        height: 28px;
+        line-height: 28px;
+        border-radius: 3px !important;
+        border: 1px solid #dcdfe6;
+        font-size: 12px !important;
+        padding: 4px 6px;
+      }
+
+      .searchFormBox-content ul li select {
+        outline: none;
+        width: 70% !important;
+        border-radius: 3px !important;
+        font-size: 12px !important;
+        padding: 4px 6px;
+        height: 28px !important;
+        line-height: 28px !important;
+        border: 1px solid #dcdfe6;
+      }
+
+      .datebox {
+        width: 70% !important;
+      }
+
+      .datebox .combo-arrow {
+        /* background-size: 20px; */
+        background-image: url(../../../../images/rili.png);
+        background-position: center center;
+      }
+
+      .datebox {
+        border-radius: 3px !important;
+      }
+
+      .dateInput input {
+        border: none !important;
+        height: 28px !important;
+        line-height: 28px !important;
+      }
+
+      .libtn {
+        padding-left: 85px;
+      }
+
+      .chahao {
+        padding-right: 3px;
+        cursor: pointer;
+        color: #FF4E4E;
+      }
+
+      .chahao:hover {
+        color: #FF4E4E;
+      }
+    </style>
+  </head>
+  <body class="easyui-layout">
+    <div id='Loading'>
+      <img class="load-img" src='../../../../images/loading.gif' />加载中···
+    </div>
+    <div data-options="region:'center',border:false" style="background:#fff;padding:3px;">
+      <div class="centerMainBox">
+        <div class="topBox">
+          <div id="searchFormBox" class="searchFormBox">
+            <span class="left-title">信息查询</span>
+            <div id="" class="searchFormBox-content">
+              <ul>
+                <li>
+                  <span id="" class="searchFormLabel">
+                    预警信息：
+                  </span>
+                  <input id="searchTitle" class="" style="" placeholder="">
+                </li>
+                <li>
+                  <span id="" class="searchFormLabel">
+                    发布人：
+                  </span>
+                  <input id="searchPerson" class="" style="" />
+                </li>
+                <li>
+                  <span id="" class="searchFormLabel">
+                    状态：
+                  </span>
+                  <select id="searchSate" class="" name="state" style="" label="状态">
+                    <option></option>
+                    <option value="1">已发布</option>
+                    <option value="2">未发布</option>
+                    <option value="0">作废</option>
+                  </select>
+                </li>
+                <li class="dateInput">
+                  <span id="" class="searchFormLabel">
+                    发布时间：
+                  </span>
+                  <input id="dd" type="text" class="easyui-datebox" />
+                </li>
+                <li class="dateInput">
+                  <span id="" class="searchFormLabel">
+                    至：
+                  </span>
+                  <input id="d8" type="text" class="easyui-datebox" />
+                </li>
+                <li class="libtn">
+
+                  <a id="" href="#" class="formBtn formBtnWidth" data-options="" onclick="searchTemplateForm()">查询</a>
+                  &nbsp;&nbsp;&nbsp;
+                  <a id="" href="#" class="formBtn formBtnWidth" data-options="" onclick="openDialog()">新建</a>
+                </li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bottomBox">
+          <h5>预警信息列表</h5>
+          <div class="table-box">
+            <table id="dg" title="" style="width:100%;height:300px"></table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div data-options="region:'south',border:false" style="height:50px;padding:3px;">
+      <div id="pp"></div>
+    </div>
+    <!-- 预警弹框 -->
+    <div id="dlg" modal="true" class="easyui-dialog" title="预警信息" style="width:650px;height:400px;padding:10px">
+      <div id="dialogForm" class="dialogBox">
+        <input id="templateId" type="hidden" name="" value="" />
+        <span class="dialogFormLabel">预警信息：</span>
+        <span class="dialogFormLabel moban" onclick="dialogOpenT()">&emsp;预警模板</span>
+        <input id="ids" type="hidden" name="" value="" />
+        <input id="publishobjectprovinceids" type="hidden" name="" value="" />
+        <input id="publishobjectcityids" type="hidden" name="" value="" />
+        <div class="isText dialogFormTextarea margin-bottom13px">
+          <textarea id="alarmInfo" style="width: 100% !important;height: 120px;border:none">
+          </textarea>
+        </div>
+        <div class="formOneWidth  left-right-box margin-bottom13px">
+          <div style="overflow: hidden;">
+            <span id="" class="" style="float: left;line-height: 26px;">
+              省公司发布对象：&nbsp;
+            </span>
+            <div class="commonbox" tabindex="0" hidefocus="true" onfocus='focusProviceBox()' onblur='onblurProviceBox()'
+              style="float: left;width:420px;height: 28px;overflow: auto;border: 1px solid #dfdfdf  ;outline=0;">
+              <span style="float: left;width:300px ;">
+                <span class="provicePhoneBox">
+                  <span class="provicePhoneBoxAuto"></span>
+                  <span class="provicePhoneBoxHand"></span>
+                </span>
+              </span>
+              <span class="phoneProviceInput" style="display: none;float: right;width: 90px;position: absolute;padding-top: 1px;"><input
+                  style="width: 90px;border: 1px solid #409eff  !important;" class="common-input" type="" name="" id="proviceConcatAll"
+                  onblur="checkProvicePhone()" value="" /> </span>
+            </div>
+            <span id="proviceIn" class="inputShow"></span>
+            &emsp;
+            <a id="" href="#" class="formBtn" data-options="" onclick="selectProvice()">选择</a>
+          </div>
+        </div>
+        <div class="formOneWidth  left-right-box margin-bottom13px">
+          <div>
+            <span id="" class="" style="float: left;line-height: 26px;">
+              市公司发布对象：&nbsp;
+            </span>
+            <!-- <input style="width: 420px;" class="common-input" type="" name="" id="proviceConcatAll" value="" /> -->
+            <div class="commonbox" class="divfocus" tabindex="0" hidefocus="true" onfocus='focusCityBox()' onblur='onblurCityBox()'
+              style="float: left;width:420px;height: 28px;overflow: auto;border: 1px solid #dfdfdf  ;outline=0;">
+              <span style="float: left;width:300px ;">
+                <span class="cityPhoneBox">
+                  <span class="cityPhoneBoxAuto"></span>
+                  <span class="cityPhoneBoxHand"></span>
+                </span>
+              </span>
+              <span class="phoneCityInput" style="display: none;float: right;width: 90px;position: absolute;padding-top: 1px;"><input
+                  style="width: 90px;border: 1px solid #409eff  !important;" class="common-input" type="" name="" id="cityConcatAll"
+                  onblur="checkCityPhone()" value="" /> </span>
+            </div>
+            <span id="proviceIn" class="inputShow"></span>
+            &emsp;
+            <a id="" href="#" class="formBtn" data-options="" onclick="selectCity()">选择</a>
+          </div>
+        </div>
+      </div>
+      <div class="formOneWidth  left-right-box margin-bottom10px">
+        <div class="left-box">
+          <span id="" class="formTextLabel100">
+            发布时间：
+          </span>
+          <span id="publishtime">
+
+          </span>
+        </div>
+        <div class="left-box">
+          <span id="" class="formTextLabel100">
+            预警生成时间：
+          </span>
+          <span id="alarmcreatetime">
+
+          </span>
+        </div>
+      </div>
+      <div class="formOneWidth  left-right-box margin-bottom10px">
+        <div class="left-box">
+          <span id="" class="formTextLabel100">
+            发布人：
+          </span>
+          <span id="publisher">
+
+          </span>
+        </div>
+      </div>
+      <div class=" diaBtnBox stateShow">
+        <a id="" href="#" class="formBtn" data-options="" onclick="saveAlarmForm()">保存</a>
+        &emsp;
+        <a id="" href="#" class="formBtn" data-options="" onclick="publicAlarmInfo()">发布</a>
+        &emsp;
+        <a id="" href="#" class="formBtn" data-options="" onclick="closeDialog()">关闭</a>
+      </div>
+    </div>
+    </div>
+    <!-- 预警弹框 -->
+    <div id="dlgSee" modal="true" class="easyui-dialog" title="预警信息" style="width:650px;height:400px;padding:10px">
+      <div id="dialogForm" class="dialogBox">
+        <span class="dialogFormLabel">预警信息：</span>
+        <div class="  margin-bottom13px">
+          <textarea id="alarmInfo1" style="width: 100% !important;height: 120px;border:none">
+          </textarea>
+        </div>
+        <div class="formOneWidth  left-right-box margin-bottom13px">
+          <div style="overflow: hidden;">
+            <span id="" class="" style="float: left;line-height: 26px;">
+              省公司发布对象：&nbsp;
+            </span>
+            <!-- <input style="width: 420px;" class="common-input" type="" name="" id="proviceConcatAll" value="" /> -->
+            <div class="commonbox" tabindex="0" hidefocus="true" onfocus='focusProviceBox()' onblur='onblurProviceBox()'
+              style="float: left;width:420px;height: 28px;overflow: auto;outline=0;">
+              <span style="float: left;width:300px ;">
+                <span class="provicePhoneBox1">
+
+                </span>
+              </span>
+
+            </div>
+          </div>
+        </div>
+        <div class="formOneWidth  left-right-box margin-bottom13px">
+          <div>
+            <span id="" class="" style="float: left;line-height: 26px;">
+              市公司发布对象：&nbsp;
+            </span>
+            <!-- <input style="width: 420px;" class="common-input" type="" name="" id="proviceConcatAll" value="" /> -->
+            <div class="commonbox" class="divfocus" tabindex="0" hidefocus="true" onfocus='focusCityBox()' onblur='onblurCityBox()'
+              style="float: left;width:420px;height: 28px;overflow: auto;outline=0;">
+              <span style="float: left;width:300px ;">
+                <span class="cityPhoneBox1">
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="formOneWidth  left-right-box margin-bottom10px">
+        <div class="left-box">
+          <span id="" class="formTextLabel100">
+            发布时间：
+          </span>
+          <span class="publishtime1">
+          </span>
+        </div>
+        <div class="left-box">
+          <span id="" class="formTextLabel100">
+            预警生成时间：
+          </span>
+          <span class="alarmcreatetime1">
+          </span>
+        </div>
+      </div>
+      <div class="formOneWidth  left-right-box margin-bottom10px">
+        <div class="left-box">
+          <span id="" class="formTextLabel100">
+            发布人：
+          </span>
+          <span class="publisher1">
+          </span>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="dlgTemplate" modal="true" class="easyui-dialog" title="选择模板" style="width:680px;height:400px;padding:10px">
+      <div data-options="region:'center',border:false" style="height:300px;background:#fff;padding:3px;">
+        <div class="topBox">
+          <div id="" class="top-left-box">
+            <div class="formOneWidth formTWO margin-bottom10px">
+              <span id="" class="searchFormLabel">
+                预警标题：
+              </span>
+              <input id="searchTitle1" class="" style="" labelPosition="before" placeholder="">
+              <span class="searchFormLabel">预警模板：</span>
+              <input id="searchMoban1" class="" style="" labelPosition="before" placeholder="">
+            </div>
+            <div class="formOneWidth left-right-box">
+              <div class="float-left-box">
+                <span id="" class="searchFormLabel">
+                  创建人：
+                </span> <input id="searchPerson1" class="" style="">
+              </div>
+              <div class="float-right-box">
+                <span id="" class="searchFormLabel" style="width: 83px;">
+                  状态：
+                </span>
+                <select id="searchState1" class="" name="state" style="" label="状态">
+                  <option value="1">有效</option>
+                </select>
+                &nbsp;
+                <a id="" href="#" class="formBtn" onclick="searchTemplates()" data-options="">查询</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table id="dgTemplate" class="easyui-datagrid" title="" style="width:100%;height:150px">
+        </table>
+        <div id="pd">
+        </div>
+      </div>
+      <div data-options="region:'south',border:false" style="height:33px;padding:3px;">
+        <div class=" diaBtnBox ">
+          <a id="" href="#" class="formBtn" data-options="" onclick="selectedTemplate()">确定</a>
+        </div>
+      </div>
+    </div>
+    <div id="dlgProviceConcat" modal="true" class="easyui-dialog" title="省公司发布对象" style="width:350px;height:440px;padding:10px">
+      <ul id="staticProviceTree" class="concatTreeBox"></ul>
+      <div class=" diaBtnBox ">
+        <a id="" href="#" class="formBtn" data-options="" onclick="saveProviceConcat()">确定</a>
+
+      </div>
+    </div>
+    <div id="dlgCityConcat" modal="true" class="easyui-dialog" title="市公司发布对象" style="width:350px;height:440px;padding:10px">
+      <ul id="staticCityTree" class="concatTreeBox"></ul>
+      <div class=" diaBtnBox ">
+        <a id="" href="#" class="formBtn" data-options="" onclick="saveCityConcat()">确定</a>
+
+      </div>
+    </div>
+    <!--[if lt IE 9]>
+		  <script src="../js/ie8/html5shiv.min.js"></script>
+		  <script src="../js/ie8/css3-mediaqueries.js"></script>
+		<![endif]-->
+    <script type="text/javascript">
+      if (navigator.userAgent.indexOf("MSIE 8.0") > -1 || navigator.userAgent.indexOf("MSIE 9.0") > -1) {
+        document.write('<script src="../../../../js/ie8/jquery.1.7.2.min.js"><\/script>');
+      } else {
+        document.write('<script src="../../../../js/jquery-3.3.1.min.js"><\/script>');
+      }
+    </script>
+    <script src="../../../../js/jquery.easyui.min.js"></script>
+    <script src="../../../../js/easyui-lang-zh_CN.js"></script>
+    <script src="../../../../js/idangerous.swiper.min.js"></script>
+    <script src="../../../../js/jquery.cookie.js"></script>
+    <script src="../../../../js/global.js"></script>
+    <script src="../../../../js/table/tablePagination.js"></script>
+    <script type="text/javascript">
+      //加载页面
+      function closes() {
+        $("#Loading").fadeOut("normal", function() {
+          $(this).remove();
+        });
+      }
+      var pc;
+      $.parser.onComplete = function() {
+        if (pc) clearTimeout(pc);
+        pc = setTimeout(closes, 0);
+      }
+
+      function messageText(text) {
+        $.messager.confirm('提示', text, function(r) {
+          if (r) {}
+        });
+      }
+      //判断是否为空对象
+      function isNULL(o) {
+        if (typeof(o) == "object") {
+          return o == undefined || o == null || o.length == 0;
+        };
+        if (typeof(o) == "string") {
+          return o == undefined || o == null || o.toUpperCase() == "NULL" || o == ""
+        }
+        return o == undefined || o == null;
+      }
+
+      function notNULL(o) {
+        return !isNULL(o);
+      }
+      //日期比大小
+      function compareDate(dateTime1, dateTime2) {
+        var formatDate1 = new Date(dateTime1);
+        var formatDate2 = new Date(dateTime2);
+        if (formatDate1 <= formatDate2) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      Date.prototype.Format = function (fmt) {
+          var o = {
+              "M+": this.getMonth() + 1, //月份
+              "d+": this.getDate(), //日
+              "H+": this.getHours(), //小时
+              "m+": this.getMinutes(), //分
+              "s+": this.getSeconds(), //秒
+              "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+              "S": this.getMilliseconds() //毫秒
+          };
+          if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+          for (var k in o)
+          if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+          return fmt;
+      }
+	  function add0(m){
+		  return m<10?'0'+m:m ;
+	  }
+	  function formatTime(shijianchuo) {
+	  //shijianchuo是整数，否则要parseInt转换
+		var time = new Date(shijianchuo);
+		var y = time.getFullYear();
+		var m = time.getMonth()+1;
+		var d = time.getDate();
+		var h = time.getHours();
+		var mm = time.getMinutes();
+		var s = time.getSeconds();
+	  return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+	  }
+      //用户信息
+      function userInfo(){
+      eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnInfo/findPublishPerson', function(res) {
+       if(res.code == '200'){
+         var time2 = new Date().Format("yyyy-MM-dd HH:mm:ss");
+         $("#publisher").text(res.data.username);
+         $("#publishtime").text(time2);
+       }
+      }, 'post');
+      }
+
+      function searchTemplates() {
+        var jsonObj = {};
+        var searchTitle = $("#searchTitle1").val();
+        if (notNULL(searchTitle)) {
+          jsonObj['mouldtitle'] = searchTitle;
+        }
+        var searchMoban = $("#searchMoban1").val();
+        if (notNULL(searchMoban)) {
+          jsonObj['mouldcontent'] = searchMoban;
+        }
+        var searchPerson = $("#searchPerson1").val();
+        if (notNULL(searchPerson)) {
+          jsonObj['createuser'] = searchPerson;
+        }
+        var searchState = $("#searchState1").val();
+        if (notNULL(searchState)) {
+          jsonObj['state'] = searchState;
+        }
+
+        //分页信息
+        jsonObj['pageSize'] = 16;
+        jsonObj['currentPage'] = 1;
+        var searchStr = JSON.stringify(jsonObj);
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/findMould', function(res) {
+          if (res.code == 0) {
+            loadTableTemplate(res.data);
+          }
+        }, 'post', searchStr);
+      }
+      //点击确定获取选择对象
+      function getTree(id) {
+        var nodes = $('#' + id).tree('getChecked'); // 获取选中的节点
+        var arrToTostring = ''
+        for (var i = 0; i < nodes.length; i++) {
+          if (nodes[i].children && nodes[i].children.length > 1) {} else {
+            if (i == nodes.length - 1) {
+              if (notNULL(nodes[i].phone)) {
+                arrToTostring += '<span class="namePhone" phoneid=' + nodes[i].id + ' style="line-height:18px;">[' +
+                  nodes[i].text + ':' + nodes[i].phone +
+                  ']<a style="padding-left:8px" class="chahao"  onclick="deleteme(this)">X</a>,</span>'
+              }
+
+            } else {
+              if (notNULL(nodes[i].phone)) {
+                arrToTostring += '<span class="namePhone" phoneid=' + nodes[i].id + ' style="line-height:18px;">[' +
+                  nodes[i].text + ':' + nodes[i].phone +
+                  ']<a style="padding-left:8px" class="chahao"  onclick="deleteme(this)">X</a>,</span>'
+              }
+
+            }
+          }
+
+        }
+        return arrToTostring
+        // return nodes;
+      }
+      //获取省公司内容框
+      function getPbox() {
+        var arrProvicexxPhones = "";
+        var arrProvicexxPhonesarr = [];
+        $('.provicePhoneBox .namePhone').each(function(i, v) {
+          var th = $(this).attr("phoneid");
+          if (notNULL(th)) {
+            arrProvicexxPhonesarr.push(th);
+          }
+        });
+        arrProvicexxPhones = arrProvicexxPhonesarr.join(',');
+        return arrProvicexxPhones;
+      }
+      //获取市公司内容框
+      function getCbox() {
+        var arrProvicexxPhones = "";
+        var arrProvicexxPhonesarr = [];
+        $('.cityPhoneBox .namePhone').each(function(i, v) {
+          var th = $(this).attr("phoneid");
+          if (notNULL(th)) {
+            arrProvicexxPhonesarr.push(th);
+          }
+        });
+        arrProvicexxPhones = arrProvicexxPhonesarr.join(',');
+        return arrProvicexxPhones;
+      }
+
+      //显示勾选-------------------------------------
+      function showPec(p) {
+        var parr = p.split(',');
+        var arrToTostring1 = "";
+        var arrToTostring2 = "";
+        $.each(parr, function(i, v) {
+          if (notNULL(v)) {
+            if (/\[|\]/g.test(v)) {
+              var objArr = v.replace(/\[|]/g, '').split(":");
+              arrToTostring1 += '<span class="namePhone" phoneid=' + objArr[2] + ' style="line-height:18px;">[' +
+                objArr[0] + ':' + objArr[1] +
+                ']<a style="padding-left:8px" class="chahao"  onclick="deleteme(this)">X</a>,</span>'
+            } else {
+              arrToTostring2 += '<span class="namePhone">' + v +
+                '<a style="padding-left:8px" class="chahao"  onclick="deleteme(this)">X</a>,</span>'
+            }
+          }
+        })
+        $(".provicePhoneBoxAuto").html(arrToTostring1)
+        $(".provicePhoneBoxHand").html(arrToTostring2)
+      }
+      //显示输入----------------------------------------------
+      function showPec1(p) {
+        var parr = p.split(',');
+        var arrToTostring1 = "";
+        var arrToTostring2 = "";
+        $.each(parr, function(i, v) {
+          if (notNULL(v)) {
+            if (/\[|\]/g.test(v)) {
+              var objArr = v.replace(/\[|]/g, '').split(":");
+              arrToTostring1 += '<span class="namePhone"  phoneid=' + objArr[2] + ' style="line-height:18px;">[' +
+                objArr[0] + ':' + objArr[1] +
+                ']<a style="padding-left:8px" class="chahao"  onclick="deleteme(this)">X</a>,</span>'
+            } else {
+              arrToTostring2 += '<span class="namePhone">' + v +
+                '<a style="padding-left:8px" class="chahao"  onclick="deleteme(this)">X</a>,</span>'
+            }
+          }
+        })
+        $(".cityPhoneBoxAuto").html(arrToTostring1)
+        $(".cityPhoneBoxHand").html(arrToTostring2)
+      }
+      //列表回显
+      function callshow(p){
+        var parr = p.split(',');
+        var arrToTostringArr = [];
+        var arrToTostr = "";
+        $.each(parr, function(i, v) {
+          if (notNULL(v)) {
+            if (/\[|\]/g.test(v)) {
+              var objArr = v.replace(/\[|]/g, '').split(":");
+              arrToTostringArr.push('['+ objArr[0] + ':' + objArr[1]+']');
+            } else {
+              arrToTostringArr.push(v)
+            }
+          }
+        })
+       arrToTostr = arrToTostringArr.join(',');
+       return arrToTostr;
+      }
+
+      //  //根据联系人数据设置树的多选框是后选中状态
+      function configTreeCheckedNew(strConcat, id) {
+        //先清空
+        //var strConcat =   "[张三:15517563613],[韩红:15517563610],";
+        var nodes = $('#' + id).tree('getChildren'); // 获取选中的节点
+        $.each(nodes, function(index, item) {
+          $('#' + id).tree('uncheck', item.target)
+        })
+        var selectArr = [];
+        var arrConcat = strConcat.split(',');
+        if (arrConcat && arrConcat.length > 0) {
+          for (var s = 0; s < arrConcat.length; s++) {
+            if (notNULL(arrConcat[s])) {
+              selectArr.push(arrConcat[s]);
+            }
+          }
+        }
+        $.each(selectArr, function(i, v) {
+          $.each(nodes, function(j, t) {
+            if (v == t.id) {
+              $("#" + id).tree('check', t.target);
+            }
+          })
+        })
+      }
+      //设置空
+      function configTreeCheckedClear(id) {
+        //先清空
+        //var strConcat =   "[张三:15517563613],[韩红:15517563610],";
+        var nodes = $('#' + id).tree('getChildren'); // 获取选中的节点
+        if(notNULL(nodes)){
+          $.each(nodes, function(index, item) {
+            $('#' + id).tree('uncheck', item.target)
+          });
+          $('#' + id).tree('collapseAll');
+        }
+
+      }
+      //省
+      function focusProviceBox() {
+        $(".phoneProviceInput").show();
+      }
+
+      function onblurProviceBox() {
+        //$(".phoneInput").hide();
+      }
+      //省
+      function focusCityBox() {
+        $(".phoneCityInput").show();
+      }
+
+      function onblurCityBox() {
+
+      }
+      //删除
+      function deleteme(e) {
+        $(e).parent().remove();
+      }
+      //selectProvice
+      function selectProvice() {
+        dialogOpen('dlgProviceConcat');
+       // var proviceInfo = getPbox();
+        getNewP();
+        //configTreeCheckedNew(proviceInfo, 'staticProviceTree');
+        //configTreeCheckedClear('staticProviceTree');
+      }
+      //selectCity
+      function selectCity() {
+        dialogOpen('dlgCityConcat')
+        //var cityInfo = getCbox();
+        getNewC();
+        //configTreeCheckedNew(cityInfo, 'staticCityTree')
+        //configTreeCheckedClear('staticCityTree');
+      }
+
+      //省联系人按钮
+      function saveProviceConcat() {
+        var proviceTreeSelected = getTree('staticProviceTree');
+        if (isNULL(proviceTreeSelected)) {
+          messageText('请选择发送对象！');
+          return false;
+        }
+        //$("#proviceConcatAll").val(proviceTreeSelected)
+        $(".provicePhoneBox .provicePhoneBoxAuto").html(proviceTreeSelected)
+        dialogClose('dlgProviceConcat')
+      }
+      //市联系人按钮
+      function saveCityConcat() {
+        var cityTreeSelected = getTree('staticCityTree');
+        //$("#cityConcatAll").val(cityTreeSelected);
+        if (isNULL(cityTreeSelected)) {
+          messageText('请选择发送对象！');
+          return false;
+        }
+        $(".cityPhoneBox .cityPhoneBoxAuto").html(cityTreeSelected)
+        dialogClose('dlgCityConcat')
+      }
+      //回车事件
+      $("#proviceConcatAll").keydown(function(e) {
+        if (e.keyCode == 13) {
+          checkProvicePhone()
+        }
+      });
+      //回车事件
+      $("#cityConcatAll").keydown(function(e) {
+        if (e.keyCode == 13) {
+          checkCityPhone()
+        }
+      });
+      //验证手机号
+      function checkProvicePhone() {
+        var phone = document.getElementById('proviceConcatAll').value;
+        if (!(/^1[34578]\d{9}$/.test(phone))) {
+
+        } else {
+          eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarningInfo/isWhiteList/' + phone, function(res) {
+            if (res.code == '200') {
+              $(".provicePhoneBox .provicePhoneBoxHand").append('<span class="namePhone">' + phone.replace(/X/, '') +
+                '<a style="padding-left:8px" class="chahao"  onclick="deleteme(this)">X</a>,</span>');
+            } else {
+              messageText(res.msg);
+            }
+          }, 'get');
+
+        }
+        $("#proviceConcatAll").val("");
+      }
+
+      function checkCityPhone() {
+        var phone = document.getElementById('cityConcatAll').value;
+        if (!(/^1[34578]\d{9}$/.test(phone))) {
+
+        } else {
+          eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarningInfo/isWhiteList/' + phone, function(res) {
+            if (res.code == '200') {
+              $(".cityPhoneBox .cityPhoneBoxHand").append('<span class="namePhone">' + phone.replace(/X/g, '') +
+                '<a style="padding-left:8px" class="chahao"  onclick="deleteme(this)">X</a>,</span>');
+            } else {
+              messageText(res.msg);
+            }
+          }, 'get');
+
+        }
+        $("#cityConcatAll").val("");
+      }
+
+      //获取市的手机号
+      //获取当前日期
+      function getNowFormatDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+          month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+          strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+      }
+
+      // 查询数据
+      function searchTemplateForm() {
+        var searchObj = {};
+        var nowDate = getNowFormatDate();
+        var searchAlarmInfo = $("#searchTitle").val();
+        if (notNULL(searchAlarmInfo)) {
+          searchObj['warnContent'] = searchAlarmInfo;
+        }
+        var searchPerson = $("#searchPerson").val();
+        if (notNULL(searchPerson)) {
+          searchObj['publisher'] = searchPerson;
+        }
+        var searchSate = $("#searchSate").val();
+        if (notNULL(searchSate)) {
+          searchObj['state'] = searchSate;
+        }
+        var dd = $("#dd").datebox('getValue');
+        var d8 = $("#d8").datebox('getValue');
+        var publishStartTime = "";
+        var publishEndTime = "";
+
+        if ((isNULL(dd) && notNULL(d8)) || (isNULL(d8) && notNULL(dd))) {
+          messageText("请选择完整时间！");
+          return false;
+        }
+        if (notNULL(dd) && notNULL(d8)) {
+          if (!compareDate(dd, nowDate) || !compareDate(d8, nowDate)) {
+            messageText("日期不能大于当前日期！");
+            return false;
+          }
+          if (!compareDate(dd, d8)) {
+            messageText("请选择正确的时间顺序！");
+            return false;
+          } else {
+            if (dd == d8) {
+              publishStartTime = (dd + ' 00:00:00').replace(/\//g, '-');
+              publishEndTime = (d8 + ' 23:59:59').replace(/\//g, '-');
+            } else {
+              publishStartTime = (dd + ' 00:00:00').replace(/\//g, '-');
+              publishEndTime = (d8 + ' 00:00:00').replace(/\//g, '-');
+
+            }
+          }
+        }
+        if (notNULL(publishStartTime) && notNULL(publishEndTime)) {
+          searchObj['publishStartTime'] = publishStartTime;
+          searchObj['publishEndTime'] = publishEndTime;
+        }
+        //分页信息
+        searchObj['pageSize'] = 16;
+        searchObj['currentPage'] = 1;
+        var searchStr = JSON.stringify(searchObj);
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnInfo/queryAllEomsWarnInfo', function(res) {
+          if (res.code == '200') {
+            loadTable(res.data.records);
+            easyuiTable.loadPage({
+              $page: $('#pp'),
+              total: res.data.total,
+              pageSize: 16,
+              callBackFn: loadFulData
+            });
+          } else {
+            messageText("未查到数据！");
+          }
+        }, 'post', searchStr);
+      }
+
+
+      function clearP() {
+        $("#alarmInfo1").val("");
+        $(".provicePhoneBox1").html("");
+        $(".cityPhoneBox1").html("");
+        $(".publishtime1").text("");
+        $(".alarmcreatetime1").text("");
+        $(".publisher1").text("");
+      }
+
+      function showInfo(row) {
+        clearP();
+        $('#dlgSee').dialog('open');
+        $("#alarmInfo1").val(row.warnContent);
+        if(notNULL(row.publishobjectProvince)){
+          $(".provicePhoneBox1").html(callshow(row.publishobjectProvince));
+        }
+        if(notNULL(row.publishobjectCity)){
+          $(".cityPhoneBox1").html(callshow(row.publishobjectCity));
+        }
+        $(".publishtime1").text(row.publishtime);
+        $(".alarmcreatetime1").text(row.alarmcreatetime);
+        $(".publisher1").text(row.publisher);
+      }
+      //根据数据状态控制显示隐藏
+      function canInput() {
+        $(".stateShow").show();
+        $("#dlg input").removeAttr('readonly')
+        $("#dlg input").removeAttr('unselectable')
+        $(".isText").addClass('dialogFormTextarea');
+        $(".inputShow").hide();
+        $("#dlg textarea").removeAttr('readonly')
+        $("#dlg textarea").removeAttr('unselectable')
+        $(".common-input").show();
+        $("#dlg input").removeClass('notBorder');
+        $("#dlg textarea").removeClass('notBorder');
+        $(".moban").show();
+      }
+
+      function canotInput() {
+        $("#dlg input").addClass('notBorder');
+        $("#dlg textarea").addClass('notBorder');
+        $(".isText").removeClass('dialogFormTextarea');
+        $(".stateShow").hide();
+        $(".inputShow").show();
+        $(".common-input").hide();
+        $("#dlg  input").attr({
+          'readonly': 'readonly',
+          'unselectable': 'on'
+        })
+        $("#dlg textarea").attr({
+          'readonly': 'readonly',
+          'unselectable': 'on'
+        })
+
+        $(".moban").hide();
+      }
+
+      //发布
+      function editInfo(row) {
+        clearForm();
+        canInput();
+        $("#ids").val(row.id);
+        $("#alarmInfo").val(row.warnContent);
+        //row.publishobjectProvince
+        //设置
+        //row id
+        var rowids = row.ids;
+        var rowPrc = row.publishobjectProvince;
+
+
+        if (notNULL(row.publishobjectProvince)) {
+          //showPersonP(row.publishobjectProvince);
+          showPec(row.publishobjectProvince);
+        }
+        if (notNULL(row.publishobjectCity)) {
+          //showPersonC(row.publishobjectCity);
+          showPec1(row.publishobjectCity)
+        }
+        $("#publishtime").text(row.publishtime);
+		//时间戳格式化
+		//var altime = formatTime(parseInt(row.alarmcreatetime));
+		if (parseInt(row.alarmcreatetime)) {
+			$("#alarmcreatetime").text(formatTime(parseInt(row.alarmcreatetime)));
+		} else {
+			$("#alarmcreatetime").text('');
+		}
+        $("#publisher").text(row.publisher);
+        $('#dlg').dialog('open');
+        userInfo();
+      }
+      //作废
+      function tovoid(row) {
+        $.messager.confirm('作废信息', '该信息确认作废么?', function(r) {
+          if (r) {
+            eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnInfo/updateWarnInfoState/' + row.id, function(res) {
+              if (res.code == '200') {
+                messageText("操作成功！");
+                init(1);
+              } else {
+                messageText("操作失败！");
+              }
+            }, 'get');
+          }
+        });
+      }
+
+      function dele(row) {
+        $.messager.confirm('删除信息', '该信息确认删除么?', function(r) {
+          if (r) {
+            eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarningInfo/delWarnInfo/' + row.id, function(res) {
+              if (res.code == '200') {
+                messageText("操作成功！");
+                init(1);
+              } else {
+                messageText("操作失败！");
+              }
+            }, 'get');
+          }
+        });
+      }
+
+      //dialog 关闭
+      function closeDialog() {
+        $('#dlg').dialog('close');
+      }
+      //dialog 打开
+      function openDialog() {
+        canInput();
+        $('#dlg').dialog({
+          title: '预警信息',
+          closed: false,
+        });
+        $('#dlg').dialog('open');
+        $(".stateShow").show();
+        clearForm();
+        userInfo();
+      }
+
+      //通用dialog打开
+      function dialogOpen(id, potion) {
+        $('#' + id).dialog('open');
+      }
+      //通用dialog关闭
+      function dialogClose(id, potion) {
+        $('#' + id).dialog('close');
+      }
+
+      function closeAlarmDialog() {
+        $('#dlgTemplate').dialog('close');
+      }
+
+      function openAlarmDialog() {
+        $('#dlgTemplate').dialog('open');
+      }
+      //清空 表单
+      function clearForm() {
+        /* $("#dialogForm").JExhibition("clear"); */
+        $("#ids").val("");
+        $("#publishobjectprovinceids").val("");
+        $("#publishobjectcityids").val("");
+        $("#alarmInfo").val("");
+        $("#proviceConcatAll").val("");
+        $("#cityConcatAll").val("");
+        $("#publishtime").text("");
+        $("#alarmcreatetime").text("");
+        $("#publisher").text("");
+        $(".provicePhoneBox .provicePhoneBoxAuto").html('');
+        $(".cityPhoneBox .cityPhoneBoxAuto").html('');
+        $(".provicePhoneBox .provicePhoneBoxHand").html('');
+        $(".cityPhoneBox .cityPhoneBoxHand").html('');
+      }
+
+      function dialogOpenT() {
+        dialogOpen('dlgTemplate');
+        loadFulDataTemplate(1)
+        //loadFulDataTemplate(1)
+      }
+
+      //选择使用模板
+      function selectedTemplate() {
+        var rowCotent = $('#dgTemplate').datagrid('getChecked');
+        if (isNULL(rowCotent)) {
+          messageText('请选择模板！');
+          return false;
+        }
+        dialogClose('dlgTemplate');
+        $("#alarmInfo").val(rowCotent[0].mouldcontent)
+      }
+
+      //get省对象
+      function get3P() {
+        var arrProvicexx = [];
+        var arrProvicexxss = "";
+        var arrProvicexxPhones = "";
+        $('.provicePhoneBox .namePhone').each(function(i, v) {
+          var thisText = $(this).text().replace(/X/g, '');
+          if (/\[|\]/g.test(thisText)) {
+            var thisTextarr = thisText.replace(/\[|]|,/g, '').split(':')
+            arrProvicexxPhones += thisTextarr[1] + ',';
+            arrProvicexxss += '[' + thisTextarr[0] + ':' + thisTextarr[1] + ':' + $(this).attr("phoneid") + '],'
+          } else {
+            arrProvicexxss += thisText;
+            arrProvicexxPhones += thisText;
+          }
+        });
+        return [arrProvicexxss, arrProvicexxPhones];
+      }
+      //get市对象
+      function get3C() {
+        var arrProvicexx = [];
+        var arrProvicexxss = "";
+        var arrProvicexxPhones = "";
+        $('.cityPhoneBox .namePhone').each(function(i, v) {
+          var thisText = $(this).text().replace(/X/g, '');
+          if (/\[|\]/g.test(thisText)) {
+            var thisTextarr = thisText.replace(/\[|]|,/g, '').split(':')
+            arrProvicexxPhones += thisTextarr[1] + ',';
+            arrProvicexxss += '[' + thisTextarr[0] + ':' + thisTextarr[1] + ':' + $(this).attr("phoneid") + '],'
+          } else {
+            arrProvicexxss += thisText;
+            arrProvicexxPhones += thisText;
+          }
+        });
+        return [arrProvicexxss, arrProvicexxPhones];
+      }
+      //保存预警信息
+      function saveAlarmForm() {
+
+        var formData = {};
+        var warnInfoId = $("#ids").val();
+        if (notNULL(warnInfoId)) {
+          formData['id'] = warnInfoId;
+        }
+        var warnContent = $("#alarmInfo").val(); //预警信息
+        if (isNULL(warnContent)) {
+          messageText('请填写预警信息！');
+          return false;
+        } else {
+          formData['warnContent'] = warnContent;
+        }
+
+        var nameProvicePhoneStr = $('.provicePhoneBox .namePhone').text();
+        if (notNULL(nameProvicePhoneStr)) {
+          var nt = get3P();
+          formData['publishobjectProvince'] = nt[0];
+          formData['publishobjectprovinceids'] = nt[1];
+        }
+
+        var nameCityPhoneStr = $('.cityPhoneBox .namePhone').text();
+        if (notNULL(nameCityPhoneStr)) {
+          var nc = get3C();
+          formData['publishobjectCity'] = nc[0];
+          formData['publishobjectcityids'] = nc[1];
+        }
+
+        var publishtime = $("#publishtime").text();
+        if (notNULL(publishtime)) {
+          formData['publishtime'] = publishtime;
+        }
+        var alarmcreatetime = $("#alarmcreatetime").text();
+        if (notNULL(alarmcreatetime)) {
+          formData['alarmcreatetime'] = alarmcreatetime;
+        }
+        var publisher = $("#publisher").text();
+        if (notNULL(publisher)) {
+          formData['publisher'] = publisher;
+        }
+
+        var jsonStr = JSON.stringify(formData);
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarningInfo/addWarnInfo', function(res) {
+          if (res.code == '200') {
+            $('#dlg').dialog('close');
+            $.messager.confirm('提示信息', '保存成功', function(r) {
+              if (r) {
+                clearForm();
+                $("#templateId").val("");
+                init(1);
+              }
+            });
+          } else {
+            $.messager.confirm('提示信息', '保存失败', function(r) {
+              if (r) {}
+            });
+          }
+        }, 'post', jsonStr)
+
+      }
+
+      //发布
+      function publicAlarmInfo() {
+        var formData = {};
+        var id = $("#ids").val();
+        if (notNULL(id)) {
+          formData['id'] = id;
+        }
+        var nameProvicePhoneStr = $('.provicePhoneBox .namePhone').text();
+        if (notNULL(nameProvicePhoneStr)) {
+          var nt = get3P();
+          formData['publishobjectProvince'] = nt[0];
+          formData['publishobjectprovinceids'] = nt[1];
+        }
+
+        var nameCityPhoneStr = $('.cityPhoneBox .namePhone').text();
+        if (notNULL(nameCityPhoneStr)) {
+          var nc = get3C();
+          formData['publishobjectCity'] = nc[0];
+          formData['publishobjectcityids'] = nc[1];
+        }
+        var warnContent = $("#alarmInfo").val(); //预警信息
+        if (isNULL(warnContent)) {
+          messageText('请填写预警信息！');
+          return false;
+        } else {
+          formData['warnContent'] = warnContent;
+        }
+        if (isNULL(nameProvicePhoneStr) && isNULL(nameCityPhoneStr)) {
+          messageText('请选择发布对象！');
+          return false;
+        }
+        var publishtime = $("#publishtime").text();
+        if (notNULL(publishtime)) {
+          formData['publishtime'] = publishtime;
+        }
+        var alarmcreatetime = $("#alarmcreatetime").text();
+        if (notNULL(alarmcreatetime)) {
+          formData['alarmcreatetime'] = alarmcreatetime;
+        }
+        var publisher = $("#publisher").text();
+        if (notNULL(publisher)) {
+          formData['publisher'] = publisher;
+        }
+
+        var jsonStr = JSON.stringify(formData);
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnInfo/publishWarnInfo', function(res) {
+          if (res.code == '200') {
+            $.messager.confirm('提示信息', '发布成功', function(r) {
+              if (r) {}
+            });
+            init(1);
+            $('#dlg').dialog('close');
+          } else {
+            $.messager.confirm('提示信息', res.msg, function(r) {
+              if (r) {}
+            });
+          }
+        }, 'post', jsonStr)
+      }
+
+      //监听窗口大小变化
+      window.onresize = function() {
+        setTimeout(domresize, 300);
+      };
+      //改变表格宽高
+      function domresize() {
+        var tableHeight = $("body").height() - $(".topBox").height() - $(".bottomBox h5").height() - 4;
+        $('#dg').datagrid('resize', {
+          height: tableHeight,
+          width: '100%'
+        });
+      }
+
+      //预警信息初始化
+
+      function init(currentPage) {
+        var jsonObj = {
+          currentPage: currentPage,
+          pageSize: 16
+        };
+        var jsonStr = JSON.stringify(jsonObj);
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnInfo/queryAllEomsWarnInfo', function(res) {
+          loadTable(res.data.records);
+          easyuiTable.loadPage({
+            $page: $('#pp'),
+            total: res.data.total,
+            pageSize: 16,
+            callBackFn: loadFulData
+          });
+        }, 'post', jsonStr);
+      }
+
+      //预警数据加载
+      var totalPage = 0;
+
+      function loadFulData(currentPage) {
+        var jsonObj = {
+          currentPage: currentPage,
+          pageSize: 16
+        };
+        var searchTitle = $("#searchTitle").val();
+        if (notNULL(searchTitle)) {
+          jsonObj['warnContent'] = searchTitle;
+        }
+        var searchPerson = $("#searchPerson").val();
+        if (notNULL(searchPerson)) {
+          jsonObj['publisher'] = searchPerson;
+        }
+        var searchSate = $("#searchSate").val();
+        if (notNULL(searchSate)) {
+          jsonObj['state'] = searchSate;
+        }
+
+        var dd = $("#dd").datebox('getValue');
+        var d8 = $("#d8").datebox('getValue');
+
+        if (notNULL(dd) && notNULL(d8)) {
+          var pustart = (dd + ' 00:00:00').replace(/\//g, '-');
+          var puend = (d8 + ' 23:59:59').replace(/\//g, '-');
+          jsonObj['publishStartTime'] = pustart;
+          jsonObj['publishEndTime'] = puend;
+        }
+
+
+        var jsonStr = JSON.stringify(jsonObj);
+
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnInfo/queryAllEomsWarnInfo', function(res) {
+          loadTable(res.data.records);
+          easyuiTable.loadPage({
+            $page: $('#pp'),
+            total: res.data.total,
+            pageSize: 16,
+            callBackFn: loadFulData
+          });
+        }, 'post', jsonStr);
+      }
+
+      function loadTable(upcomlistData) {
+        var tableHeight = $("body").height() - $(".topBox").height() - $(".bottomBox h5").height() - 80;
+
+        $('#dg').datagrid({
+          data: upcomlistData,
+          /* fit: true, */
+          fitColumns: true,
+          singleSelect: true,
+          border: false,
+          columns: [
+            [{
+                field: 'warnnumber',
+                title: '预警编号',
+                width: '13%',
+                align: 'center'
+              },
+              {
+                field: 'alarmcreatetime',
+                title: '预警生成时间',
+                width: '13%',
+                align: 'center',
+				formatter:function(val, row, index) {
+					var s = "";
+					if(notNULL(val)){
+						var timeFormat = parseInt(val);
+						var timeAlar = formatTime(timeFormat);
+						s = timeAlar;						
+					}				  
+				    return s;
+				}
+              },
+              {
+                field: 'warnContent',
+                title: '预警信息',
+                width: '17%',
+                align: 'center',
+                 formatter:function(val, row, index) {
+                     var  infoX = "";
+                  if (notNULL(row.warnContent)) {
+                    infoX = row.warnContent;
+                  }
+
+                  var t = "<span  style='cursor:pointer'   class='easyui-tooltip titletipInfo" + row.id + "'>" + infoX +
+                    " </span>";
+                  return t;
+                }
+              },
+              {
+                field: 'publishobjectProvince',
+                title: '发布对象',
+                width: '18%',
+                align: 'center',
+                formatter: function(val, row, index) {
+                  var s = "";
+                  var sArr = [];
+                  if (notNULL(row.publishobjectProvince)) {
+                     sArr.push(row.publishobjectProvince) ;
+                  }
+                  if (notNULL(row.publishobjectCity)) {
+                    sArr.push(row.publishobjectCity) ;
+                  }
+                  s= sArr.join(',')
+                  var t = "<span  style='cursor:pointer'   class='easyui-tooltip titletip" + row.id + "'>" + s +
+                    " </span>";
+                  return t;
+                }
+              },
+              {
+                field: 'publisher',
+                title: '发布人',
+                width: '8%',
+                align: 'center'
+              },
+              {
+                field: 'publishtime',
+                title: '发布时间',
+                width: '13%',
+                align: 'center',
+				formatter:function(val, row, index) {
+				  var s = "";
+				  if(notNULL(val)){
+				  	var timeFormat = parseInt(val);
+				  	var timeAlar = formatTime(timeFormat);
+				  	s = timeAlar;						
+				  }				  
+				  return s;
+				}
+              },
+              {
+                field: 'state',
+                title: '状态',
+                width: '8%',
+                align: 'center',
+                formatter: function(val, row, index) {
+                  var s = "";
+                  if (val == 0) {
+                    s = "<span style='color:red'>作废</span>"
+                  } else if (val == 1) {
+                    s = "<span>已发布</span>"
+                  } else if (val == 2) {
+                    s = "<span>未发布</span>"
+                  }
+                  return s;
+                }
+              },
+              {
+                field: 'operator',
+                title: '操作',
+                width: '10%',
+                align: 'left',
+                formatter: function(val, row, index) {
+
+                  var dataDetail = JSON.stringify(row).replace(/"/g, '&quot;');
+                  var s = "";
+                  /* var s = '<a href="javascript:void(0)" class="eoms-datagrid-btn editBtn" onclick="editTemplate(' + dataDetail +
+                     ')"><i class="fa fa-edit"></i>&nbsp;编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="eoms-datagrid-btn deleteBtn" onclick="dele(' +
+                     index +
+                     ')"><i class="fa fa-trash"></i>&nbsp;作废</a>'; */
+                  if (row.state == 0) {
+                    s += '<a href="javascript:void(0)" class="eoms-datagrid-btn seeBtn" onclick="showInfo(' +
+                      dataDetail +
+                      ')">查看</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="eoms-datagrid-btn deleteBtn" onclick="dele(' +
+                      dataDetail +
+                      ')">删除</a>';
+                  }
+                  if (row.state == 1) {
+                    s += '<a href="javascript:void(0)" class="eoms-datagrid-btn seeBtn" onclick="showInfo(' +
+                      dataDetail +
+                      ')">查看</a>';
+
+                  } else if (row.state == 2) {
+                    s += '<a href="javascript:void(0)" class="eoms-datagrid-btn editBtn" onclick="editInfo(' +
+                      dataDetail +
+                      ')">发布</a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="eoms-datagrid-btn deleteBtn" onclick="tovoid(' +
+                      dataDetail +
+                      ')">作废</a>';
+                  }
+                  return s;
+
+                }
+              }
+            ]
+          ],
+          onLoadSuccess: function(data) {
+            $.each(data.rows, function(i, v) {
+              var s = "";
+              var sArr = [];
+              if (notNULL(v.publishobjectProvince)) {
+                sArr.push(callshow(v.publishobjectProvince)) ;
+              }
+              if (notNULL(v.publishobjectCity)) {
+                sArr.push(callshow(v.publishobjectCity)) ;
+              }
+
+              s= sArr.join(',');
+              $(".titletip" + v.id).tooltip({
+                position: 'top',
+                deltaX: -80, //deltaX number 水平方向提示框的位置。默认为 0
+                deltaY: 0, //deltaY number 垂直方向提示框的位置。默认为 0
+                content: '<span >' + s + '</span>',
+                onShow: function() {
+                  $(this).tooltip('tip').css({
+                    width: 'auto',
+                    boxShadow: '1px 1px 3px #292929',
+                  });
+                }
+              });
+              $(".titletipInfo" + v.id).tooltip({
+                position: 'top',
+                deltaX: 0, //deltaX number 水平方向提示框的位置。默认为 0
+                deltaY: 0, //deltaY number 垂直方向提示框的位置。默认为 0
+                content: '<span >' + v.warnContent + '</span>',
+                onShow: function() {
+                  $(this).tooltip('tip').css({
+                    width: 'auto',
+                    boxShadow: '1px 1px 3px #292929',
+                  });
+                }
+              });
+            })
+          }
+        }).datagrid('resize', {
+          height: tableHeight,
+          width: '100%'
+        })
+      }
+
+      function tiptool(e) {
+        $(this).tooltip({
+          position: 'top',
+          content: '<span style="color:#fff;">' + dataStr + '</span>',
+          onShow: function() {
+            $(this).tooltip('tip').css({
+              backgroundColor: '#aaa',
+              borderColor: '#999',
+              'text-align': 'left'
+            });
+          }
+        });
+      }
+
+      var totalPageTemplate = 0;
+
+      function loadFulDataTemplate(currentPage) {
+        var jsonObj = {
+          currentPage: currentPage,
+          pageSize: 16
+        };
+        var searchTitle = $("#searchTitle").val();
+        if (notNULL(searchTitle)) {
+          jsonObj['mouldtitle'] = searchTitle;
+        }
+        var searchMoban = $("#searchMoban").val();
+        if (notNULL(searchMoban)) {
+          jsonObj['mouldcontent'] = searchMoban;
+        }
+        var searchPerson = $("#searchPerson").val();
+        if (notNULL(searchPerson)) {
+          jsonObj['createuser'] = searchPerson;
+        }
+        var searchState = $("#searchState").val();
+        if (notNULL(searchState)) {
+          jsonObj['state'] = searchState;
+        }
+        var jsonStr = JSON.stringify(jsonObj);
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/findMould', function(res) {
+          loadTableTemplate(res.data);
+          easyuiTable.loadPage({
+            $page: $('#pd'),
+            total: res.total,
+            pageSize: 16,
+            callBackFn: loadFulDataTemplate
+          });
+        }, 'post', jsonStr);
+      }
+
+      function loadTableTemplate(upcomlistData) {
+
+        $('#dgTemplate').datagrid({
+          data: upcomlistData,
+          /* fit: true, */
+          fitColumns: true,
+          singleSelect: true,
+          border: true,
+          columns: [
+            [{
+                field: 'ck',
+                title: '选择',
+                width: '10%',
+                align: 'center',
+                checkbox: true
+              },
+              {
+                field: 'createuser',
+                title: '操作人',
+                width: '10%',
+                align: 'center'
+              },
+              {
+                field: 'updatetime',
+                title: '操作时间',
+                width: '20%',
+                align: 'center'
+              },
+              {
+                field: 'mouldtitle',
+                title: '预警标题',
+                width: '20%',
+                align: 'center'
+              },
+              {
+                field: 'mouldcontent',
+                title: '预警模板',
+                width: '30%',
+                align: 'center'
+              },
+              {
+                field: 'state',
+                title: '状态',
+                width: '10%',
+                align: 'center',
+                formatter: function(val, row, index) {
+                  var s = ""
+                  if (val == 1) {
+                    s = "<span>有效</span>"
+
+                  } else {
+                    s = "<span>无效</span>"
+                  }
+                  return s;
+                }
+              }
+            ]
+          ]
+        }).datagrid('resize', {
+          height: '170px',
+          width: '100%'
+        })
+        // 加载表格
+
+        //$('#dgTemplate').datagrid();
+        /* initGridHeight('#dg'); */
+
+      }
+
+      //请求子节点
+      function getChildT(id,idName){
+          eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/findSmsGroupPerson/'+id, function(res) {
+            var data = res.data;
+            var a = $('#'+idName).tree('getSelected');
+
+            var aChild = a.children;
+            if(isNULL(aChild) ){
+                  var da = data;
+                  $("#"+idName).tree('append',{
+                  	parent:a.target,
+                  	data:da
+                  });
+            }else{
+
+            }
+          }, 'get');
+      }
+      function getChildC(id,idName){
+          eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/findSmsGroupPerson/'+id, function(res) {
+            var data = res.data;
+            var a = $('#'+idName).tree('find',id);
+            var aChild = a.children;
+            if(isNULL(aChild)){
+                  var da = data;
+                  $("#"+idName).tree('append',{
+                  	parent:a.target,
+                  	data:da
+                  });
+            }
+          }, 'get');
+      }
+
+      //请求省
+      function getNewP(){
+        eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/findSmsGroup', function(res) {
+          $("#staticProviceTree").tree({
+            //url:'d.json',
+            checkbox: true,
+            data: res.data,
+            onClick: function(node) {
+               getChildT(node.id,'staticProviceTree');
+               $(node.target).find('.tree-hit').removeClass('tree-collapsed').addClass('tree-expanded');
+              // 展开/折叠
+             /* if (node.state === 'open') {
+                $('#staticProviceTree').tree('isLeaf', node.target);
+              } else {
+                $('#staticProviceTree').tree('isLeaf', node.target);
+              } */
+            },
+            onCheck:function(node,checked){
+              getChildC(node.id,'staticProviceTree');
+              $(node.target).find('.tree-hit').removeClass('tree-collapsed').addClass('tree-expanded');
+            },
+            onLoadSuccess: function(node, data) { // 加载成功后折叠所有节点
+              $('#staticProviceTree').tree('collapseAll');
+            }
+          });
+        }, 'get');
+      }
+      //请求市
+      function getNewC(){
+          eomsGlobal.ajaxFn('/haeoms/wrm/eomsWarnMould/findSmsGroup', function(res) {
+            $("#staticCityTree").tree({
+              //url:'d.json',
+              checkbox: true,
+              data: res.data,
+              onClick: function(node) {
+                 getChildT(node.id,'staticCityTree');
+                 $(node.target).find('.tree-hit').removeClass('tree-collapsed').addClass('tree-expanded');
+                // 展开/折叠
+                if (node.state === 'open') {
+                  $('#staticCityTree').tree('collapse', node.target);
+                } else {
+                  $('#staticCityTree').tree('expand', node.target);
+                }
+              },
+              onCheck:function(node,checked){
+                getChildC(node.id,'staticCityTree');
+                $(node.target).find('.tree-hit').removeClass('tree-collapsed').addClass('tree-expanded');
+              },
+              onLoadSuccess: function(node, data) { // 加载成功后折叠所有节点
+                $('#staticCityTree').tree('collapseAll');
+              }
+            });
+
+          }, 'get');
+      }
+      //自执行函数
+      $(function() {
+        loadFulData(1);
+        //页面表格
+        //初始所有弹框关闭
+        $('#dlg').dialog('close');
+        $('#dlgTemplate').dialog('close');
+        $("#dlgProviceConcat").dialog('close');
+        $("#dlgCityConcat").dialog('close');
+        $("#dlgSee").dialog('close');
+
+      });
+    </script>
+  </body>
+</html>
